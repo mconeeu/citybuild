@@ -1,8 +1,14 @@
-name: MCONE-CITYBUILDSYSTEM
+name: MCONE-CitybuildSystem
 authors: [Marvin Hülsmann]
 version: ${project.version}
 main: eu.mcone.citybuild.Citybuild
 description: Ein CityBuild Plugin von MCONE
 
-depend: [MCONE-BukkitCoreSystem]
+depend: [MCONE-BukkitCoreSystem, PlotSquared]
 
+permissions:
+  citybuild:
+    description: Citybuild root permission
+    children:
+      citybuild.rand:
+        description: Allows to change the border of all plots

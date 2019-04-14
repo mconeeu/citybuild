@@ -26,6 +26,7 @@ public class Citybuild extends CorePlugin {
     public void onEnable() {
         instance = this;
         this.plotWorld = CoreSystem.getInstance().getWorldManager().getWorld("Citybuild");
+        CoreSystem.getInstance().getTranslationManager().loadCategories(this);
 
         Broadcast.schedule();
 
@@ -35,16 +36,17 @@ public class Citybuild extends CorePlugin {
                 new AdvertisingCMD(),
                 new SignaturCMD(),
                 new FarmWorldCMD(),
-                new NetherCMD()
+                new NetherCMD(),
+                new BorderCMD()
         );
         CoreSystem.getInstance().enableSpawnCommand(plotWorld);
 
         registerEvents(
                 new NpcInteract(),
                 new PlayerJoinListener()
-
-
         );
+
+        sendConsoleMessage("§aVersion §f" + this.getDescription().getVersion() + "§a enabled!");
     }
 
     @Override
