@@ -1,0 +1,8 @@
+name: MCONE-CITYBUILDSYSTEM
+authors: [Marvin Hülsmann]
+version: ${project.version}
+main: eu.mcone.citybuild.Citybuild
+description: Ein CityBuild Plugin von MCONE
+
+depend: [MCONE-BukkitCoreSystem]
+
