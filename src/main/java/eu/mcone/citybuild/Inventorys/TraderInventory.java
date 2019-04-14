@@ -104,7 +104,7 @@ public class TraderInventory extends CoreInventory {
                 e -> {
                     if (cp.getCoins() - 50 >= 0) {
                         cp.removeCoins(50);
-                        p.getInventory().addItem(new ItemBuilder(Material.STONE_SWORD, 1, 0).displayName("§fStein-Schwert").create());
+                        p.getInventory().addItem(new ItemBuilder(Material.STONE_SWORD, 1, 0).displayName("§fStein-Schwert").enchantment(Enchantment.DAMAGE_ALL,1).create());
 
 
                         p.closeInventory();
