@@ -25,7 +25,7 @@ public class Citybuild extends CorePlugin {
     @Override
     public void onEnable() {
         instance = this;
-        this.plotWorld = CoreSystem.getInstance().getWorldManager().getWorld("plots");
+        this.plotWorld = CoreSystem.getInstance().getWorldManager().getWorld("Citybuild");
 
         Broadcast.schedule();
 
