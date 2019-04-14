@@ -15,6 +15,7 @@ public class BorderInventory extends CoreInventory {
 
         setItem(InventorySlot.ROW_1_SLOT_1, new ItemBuilder(Material.SANDSTONE_STAIRS, 1).displayName("Rand zurücksetzen").create(), e -> setRand(plot, "44:1"));
         setItem(InventorySlot.ROW_1_SLOT_2, new ItemBuilder(Material.BEACON, 1).displayName("Beacon setzen").create(), e -> setRand(plot, "138"));
+        setItem(InventorySlot.ROW_1_SLOT_3, new ItemBuilder(Material.REDSTONE, 1).displayName("Redstone setzen").create(), e -> setRand(plot, "331"));
 
         openInventory();
     }
