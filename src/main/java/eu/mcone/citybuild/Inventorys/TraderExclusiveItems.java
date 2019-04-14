@@ -86,6 +86,16 @@ public class TraderExclusiveItems extends CoreInventory {
 
                 });
 
+        setItem(InventorySlot.ROW_5_SLOT_1, new ItemBuilder(Material.ARROW, 1, 0).displayName("§c§lMarkt-Liste").lore("§7§oGucke dir hier", "§7§oDie Preise der Aktuellen", "§7§oItems  an.").create(),
+                e -> {
+
+                    p.playSound(p.getLocation(), Sound.CHICKEN_EGG_POP, 1, 1);
+                    new AdverisingModeInventory(p);
+
+
+                });
+
+
 //////////////////////////////////////////
 
         setItem(InventorySlot.ROW_2_SLOT_3, new ItemBuilder(Material.MOB_SPAWNER, 1, 0).displayName("§c§lMobSpawner").lore("", "§6§o500.000 Coins").create(),

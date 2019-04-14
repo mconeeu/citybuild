@@ -83,6 +83,16 @@ public class TraderPetsInventory extends CoreInventory {
 
                 });
 
+        setItem(InventorySlot.ROW_5_SLOT_1, new ItemBuilder(Material.ARROW, 1, 0).displayName("§c§lMarkt-Liste").lore("§7§oGucke dir hier", "§7§oDie Preise der Aktuellen", "§7§oItems  an.").create(),
+                e -> {
+
+                    bp.playSound(bp.getLocation(), Sound.CHICKEN_EGG_POP, 1, 1);
+                    new AdverisingModeInventory(bp);
+
+
+                });
+
+
 
 
 

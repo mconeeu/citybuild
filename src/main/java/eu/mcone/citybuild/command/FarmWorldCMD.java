@@ -6,7 +6,7 @@ import org.bukkit.entity.Player;
 
 public class FarmWorldCMD extends CorePlayerCommand {
 
-    public FarmWorldCMD() { super("farmwerlt");
+    public FarmWorldCMD() { super("farmwelt");
     }
 
 
