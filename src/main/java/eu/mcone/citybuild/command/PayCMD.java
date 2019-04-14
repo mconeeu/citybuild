@@ -40,7 +40,7 @@ public class PayCMD extends CorePlayerCommand {
                 }
             }
         } else {
-            bp.sendMessage("§8[§7§l!§8] §fSystem §8» §7Bitte benutze /pay [Spieler] [Anzahl]");
+            bp.sendMessage("§8[§7§l!§8] §fSystem §8» §4Bitte benutze: §c/pay <Spieler> <Anzahl>");
         }
         return false;
     }
