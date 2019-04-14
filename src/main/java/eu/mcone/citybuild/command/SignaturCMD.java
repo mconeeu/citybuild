@@ -35,7 +35,7 @@ public class SignaturCMD extends CorePlayerCommand {
 
                 if (!meta.hasLore() || meta.getLore().size() == 0) {
                     List<String> lore = new ArrayList<>();
-                    lore.add("§fDas Item wurde Signiert von " + cp.getMainGroup().getPrefix() + p.getName()+ " §fam "+ new SimpleDateFormat("dd.MM.yyyy").format(new Date()));
+                    lore.add("§fDas Item wurde Signiert von " + cp.getMainGroup().getPrefix() + p.getName()+ " §fam §7"+ new SimpleDateFormat("dd.MM.yyyy").format(new Date()));
                     meta.setLore(lore);
 
                     i.setItemMeta(meta);
