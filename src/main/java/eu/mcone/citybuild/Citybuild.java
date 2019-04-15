@@ -37,7 +37,8 @@ public class Citybuild extends CorePlugin {
                 new SignaturCMD(),
                 new FarmWorldCMD(),
                 new NetherCMD(),
-                new BorderCMD()
+                new BorderCMD(),
+                new CraftCMD()
         );
         CoreSystem.getInstance().enableSpawnCommand(plotWorld);
 
