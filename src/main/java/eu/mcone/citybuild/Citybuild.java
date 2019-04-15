@@ -49,7 +49,8 @@ public class Citybuild extends CorePlugin {
                 new PlayerAchievementAwardedListener(),
                 new PlayerDeathListener(),
                 new PlayerRespawnListener(),
-                new PlayerQuitListener()
+                new PlayerQuitListener(),
+                new MoneyChangeListener()
         );
 
         for (CorePlayer p : CoreSystem.getInstance().getOnlineCorePlayers()) {

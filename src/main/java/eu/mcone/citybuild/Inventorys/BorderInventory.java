@@ -24,15 +24,15 @@ public class BorderInventory extends CoreInventory {
         setItem(InventorySlot.ROW_1_SLOT_5, new ItemBuilder(Material.SEA_LANTERN, 1).displayName("§eSee-Laternen Rand").lore("§7Für §35000 Coins §7verfügbar!").create(), e -> setRand(plot,p,5000, "169"));
         setItem(InventorySlot.ROW_1_SLOT_6, new ItemBuilder(Material.ENDER_STONE, 1).displayName("§eEndstone Rand").lore("§7Für §35000 Coins §7verfügbar!").create(), e -> setRand(plot,p,5000,"121"));
         setItem(InventorySlot.ROW_1_SLOT_7, new ItemBuilder(Material.BEDROCK, 1).displayName("§eBedrock Rand").lore("§7Für §35000 Coins §7verfügbar!").create(), e -> setRand(plot,p,5000, "7"));
-        setItem(InventorySlot.ROW_1_SLOT_8, new ItemBuilder(Material.CAKE_BLOCK, 1).displayName("§eKuchen Rand").lore("§7Für §310000 Coins §7verfügbar!").create(), e -> setRand(plot,p,10000, "92"));
+        setItem(InventorySlot.ROW_1_SLOT_8, new ItemBuilder(Material.CAKE, 1).displayName("§eKuchen Rand").lore("§7Für §310000 Coins §7verfügbar!").create(), e -> setRand(plot,p,10000, "92"));
         setItem(InventorySlot.ROW_1_SLOT_9, new ItemBuilder(Material.BARRIER, 1).displayName("§eKein Rand").lore("§7Für §315000 Coins §7verfügbar!").create(), e -> setRand(plot,p,15000, "0"));
-        setItem(InventorySlot.ROW_2_SLOT_1, new ItemBuilder(Material.ENDER_PORTAL, 1).displayName("§eEndportal Rand").lore("§7Für §320000 Coins §7verfügbar!").create(), e -> setRand(plot,p,20000, "120"));
+        setItem(InventorySlot.ROW_2_SLOT_1, new ItemBuilder(Material.ENDER_PORTAL_FRAME, 1).displayName("§eEndportal Rand").lore("§7Für §320000 Coins §7verfügbar!").create(), e -> setRand(plot,p,20000, "120"));
         setItem(InventorySlot.ROW_2_SLOT_2, new ItemBuilder(Material.NOTE_BLOCK, 1).displayName("§eNoteblock Rand").lore("§7Für §320000 Coins §7verfügbar!").create(), e -> setRand(plot, p, 20000, "25"));
 
-        setItem(InventorySlot.ROW_3_SLOT_9, new ItemBuilder(Material.STONE_SLAB2, 1).displayName("§eRand zurücksetzen").lore("§7Für §3100 Coins §7verfügbar!").create(), e -> setRand(plot, p, 100, "44:1"));
+        setItem(InventorySlot.ROW_3_SLOT_9, new ItemBuilder(Material.DOUBLE_STONE_SLAB2, 1).displayName("§eRand zurücksetzen").lore("§7Für §3100 Coins §7verfügbar!").create(), e -> setRand(plot, p, 100, "44:1"));
 
         if (p.hasPermission("citybuild.border.rating")) {
-            setItem(InventorySlot.ROW_3_SLOT_5, new ItemBuilder(Material.DRAGON_EGG, 1).displayName("§4Drachenei Rand").lore("§7Ein §3BEWERTUNGSRAND §7gibt es nur wenn das GS schön aussieht!").create(), e -> setRand(plot, p, 0, "25"));
+            setItem(InventorySlot.ROW_3_SLOT_5, new ItemBuilder(Material.DRAGON_EGG, 1).displayName("§4Drachenei Rand").lore("§7Ein §3BEWERTUNGSRAND §7gibt es nur wenn das GS schön aussieht!").create(), e -> setRand(plot, p, 0, "122"));
 
         }
 
