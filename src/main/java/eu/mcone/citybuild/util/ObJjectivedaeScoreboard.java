@@ -24,7 +24,7 @@ public class ObJjectivedaeScoreboard extends CoreSidebarObjective {
         setScore(3,"§7Shop");
         setScore(2,"§fshop.mcone.eu");
         setScore(1,"");
-        setScore(0,"§f§lMCONE.EU");
+        setScore(0,"§f§lMCONE.EUE");
 
 
 
