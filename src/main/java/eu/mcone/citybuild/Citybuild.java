@@ -4,8 +4,10 @@ import eu.mcone.citybuild.command.*;
 import eu.mcone.citybuild.listener.Broadcast;
 import eu.mcone.citybuild.listener.NpcInteract;
 import eu.mcone.citybuild.listener.PlayerJoinListener;
+import eu.mcone.citybuild.util.SidebarObjective;
 import eu.mcone.coresystem.api.bukkit.CorePlugin;
 import eu.mcone.coresystem.api.bukkit.CoreSystem;
+import eu.mcone.coresystem.api.bukkit.player.CorePlayer;
 import eu.mcone.coresystem.api.bukkit.world.CoreWorld;
 import lombok.Getter;
 import org.bukkit.ChatColor;
@@ -46,6 +48,10 @@ public class Citybuild extends CorePlugin {
                 new NpcInteract(),
                 new PlayerJoinListener()
         );
+
+        for (CorePlayer p : CoreSystem.getInstance().getOnlineCorePlayers()) {
+            p.getScoreboard().setNewObjective(new SidebarObjective());
+        }
 
         sendConsoleMessage("§aVersion §f" + this.getDescription().getVersion() + "§a enabled!");
     }

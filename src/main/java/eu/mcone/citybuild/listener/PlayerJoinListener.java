@@ -1,5 +1,6 @@
 package eu.mcone.citybuild.listener;
 
+import eu.mcone.citybuild.util.SidebarObjective;
 import eu.mcone.coresystem.api.bukkit.CoreSystem;
 import eu.mcone.coresystem.api.bukkit.player.CorePlayer;
 import org.bukkit.GameMode;
@@ -16,10 +17,10 @@ public class PlayerJoinListener implements Listener {
         CorePlayer cp = CoreSystem.getInstance().getCorePlayer(p);
 
         if (p.hasPermission("citybuild.join.vanish")) {
-
             cp.setVanished(true);
             p.setGameMode(GameMode.CREATIVE);
         }
 
+        cp.getScoreboard().setNewObjective(new SidebarObjective());
     }
 }
