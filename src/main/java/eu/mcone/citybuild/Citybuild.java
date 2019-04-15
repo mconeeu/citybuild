@@ -1,9 +1,7 @@
 package eu.mcone.citybuild;
 
 import eu.mcone.citybuild.command.*;
-import eu.mcone.citybuild.listener.Broadcast;
-import eu.mcone.citybuild.listener.NpcInteract;
-import eu.mcone.citybuild.listener.PlayerJoinListener;
+import eu.mcone.citybuild.listener.*;
 import eu.mcone.citybuild.util.SidebarObjective;
 import eu.mcone.coresystem.api.bukkit.CorePlugin;
 import eu.mcone.coresystem.api.bukkit.CoreSystem;
@@ -46,7 +44,11 @@ public class Citybuild extends CorePlugin {
 
         registerEvents(
                 new NpcInteract(),
-                new PlayerJoinListener()
+                new PlayerJoinListener(),
+                new WeatherChangeListener(),
+                new PlayerAchievementAwardedListener(),
+                new PlayerDeathListener(),
+                new PlayerRespawnListener()
         );
 
         for (CorePlayer p : CoreSystem.getInstance().getOnlineCorePlayers()) {

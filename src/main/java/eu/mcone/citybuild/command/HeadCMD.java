@@ -10,6 +10,7 @@ public class HeadCMD extends CorePlayerCommand {
 
     public HeadCMD() {
         super("head");
+        CoreSystem.getInstance().getCooldownSystem().setCustomCooldownFor(getClass(), 120);
     }
 
     @Override

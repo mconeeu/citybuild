@@ -11,7 +11,7 @@ public class SidebarObjective extends CoreSidebarObjective {
     }
 
     @Override
-    protected void onRegister(CorePlayer corePlayer) {
+    protected void onRegister(CorePlayer player) {
 
         setDisplayName("§7§l⚔ §b§l§nCitybuild");
         setScore(10, "");
@@ -19,7 +19,7 @@ public class SidebarObjective extends CoreSidebarObjective {
         setScore(8, " §f"+ Bukkit.getOnlinePlayers().size() + "/" + Bukkit.getServer().getMaxPlayers());
         setScore(7, "");
         setScore(6, "§8» §7Coins:");
-        setScore(5, " §f"+ player.getCoins());
+        setScore(5, " §f"+ player.getFormattedCoins());
         setScore(4, "");
         setScore(3, "§8» §7Shop:");
         setScore(2, " §fshop.mcone.eu");
