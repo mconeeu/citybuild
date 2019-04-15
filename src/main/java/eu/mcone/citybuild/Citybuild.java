@@ -48,7 +48,8 @@ public class Citybuild extends CorePlugin {
                 new WeatherChangeListener(),
                 new PlayerAchievementAwardedListener(),
                 new PlayerDeathListener(),
-                new PlayerRespawnListener()
+                new PlayerRespawnListener(),
+                new PlayerQuitListener()
         );
 
         for (CorePlayer p : CoreSystem.getInstance().getOnlineCorePlayers()) {

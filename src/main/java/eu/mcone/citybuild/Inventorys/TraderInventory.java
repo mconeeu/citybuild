@@ -111,7 +111,6 @@ public class TraderInventory extends CoreInventory {
 
                         p.closeInventory();
                         p.playSound(p.getLocation(), Sound.LEVEL_UP, 1, 1);
-                        cp.getScoreboard().reload();
                     } else {
                         p.sendMessage("§cDu hast nicht genügend Coins");
                     }
@@ -127,7 +126,6 @@ public class TraderInventory extends CoreInventory {
 
                         p.closeInventory();
                         p.playSound(p.getLocation(), Sound.LEVEL_UP, 1, 1);
-                        cp.getScoreboard().reload();
                     } else {
                         p.sendMessage("§cDu hast nicht genügend Coins");
                     }
@@ -144,7 +142,6 @@ public class TraderInventory extends CoreInventory {
 
                         p.closeInventory();
                         p.playSound(p.getLocation(), Sound.LEVEL_UP, 1, 1);
-                        cp.getScoreboard().reload();
                     } else {
                         p.sendMessage("§cDu hast nicht genügend Coins");
                     }
@@ -161,7 +158,6 @@ public class TraderInventory extends CoreInventory {
 
                         p.closeInventory();
                         p.playSound(p.getLocation(), Sound.LEVEL_UP, 1, 1);
-                        cp.getScoreboard().reload();
                     } else {
                         p.sendMessage("§cDu hast nicht genügend Coins");
                     }
@@ -178,7 +174,6 @@ public class TraderInventory extends CoreInventory {
 
                         p.closeInventory();
                         p.playSound(p.getLocation(), Sound.LEVEL_UP, 1, 1);
-                        cp.getScoreboard().reload();
                     } else {
                         p.sendMessage("§cDu hast nicht genügend Coins");
                     }

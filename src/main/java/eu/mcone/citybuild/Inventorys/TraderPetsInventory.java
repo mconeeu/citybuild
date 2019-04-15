@@ -109,7 +109,6 @@ public class TraderPetsInventory extends CoreInventory {
 
                         bp.playSound(bp.getLocation(), Sound.LEVEL_UP, 1, 1);
                         bp.closeInventory();
-                        cp.getScoreboard().reload();
                     } else {
                         bp.sendMessage("§8[§7§l!§8] §fSystem §8» §7Du hast nicht genügend Coins");
                     }
@@ -123,7 +122,6 @@ public class TraderPetsInventory extends CoreInventory {
 
                         bp.playSound(bp.getLocation(), Sound.LEVEL_UP, 1, 1);
                         bp.closeInventory();
-                        cp.getScoreboard().reload();
                     } else {
                         bp.sendMessage("§8[§7§l!§8] §fSystem §8» §7Du hast nicht genügend Coins");
                     }
@@ -133,7 +131,6 @@ public class TraderPetsInventory extends CoreInventory {
                 e -> {
                     if ((cp.getCoins() - 15000) >= 0) {
                         cp.removeCoins(15000);
-                        cp.getScoreboard().reload();
                         bp.getInventory().addItem(new ItemBuilder(Material.MONSTER_EGG, 1, 90).displayName("§5Schwein-SpawnEi").create());
 
                         bp.playSound(bp.getLocation(), Sound.LEVEL_UP, 1, 1);
@@ -147,7 +144,6 @@ public class TraderPetsInventory extends CoreInventory {
                 e -> {
                     if ((cp.getCoins() - 200000) >= 0) {
                         cp.removeCoins(200000);
-                        cp.getScoreboard().reload();
                         bp.getInventory().addItem(new ItemBuilder(Material.MONSTER_EGG, 1, 55).displayName("§5Slime-SpawnEi").create());
 
                         bp.playSound(bp.getLocation(), Sound.LEVEL_UP, 1, 1);
@@ -162,7 +158,6 @@ public class TraderPetsInventory extends CoreInventory {
 
                     if ((cp.getCoins() - 100000) >= 0) {
                         cp.removeCoins(100000);
-                        cp.getScoreboard().reload();
                         bp.getInventory().addItem(new ItemBuilder(Material.MONSTER_EGG, 1, 120).displayName("§bVillager-SpawnEi").create());
 
                         bp.closeInventory();
@@ -177,7 +172,6 @@ public class TraderPetsInventory extends CoreInventory {
 
                     if ((cp.getCoins() - 400000) >= 0) {
                         cp.removeCoins(400000);
-                        cp.getScoreboard().reload();
                         bp.getInventory().addItem(new ItemBuilder(Material.MONSTER_EGG, 1, 68).displayName("§5Wächter-SpawnEi").create());
                         bp.playSound(bp.getLocation(), Sound.LEVEL_UP, 1, 1);
 
@@ -193,7 +187,6 @@ public class TraderPetsInventory extends CoreInventory {
 
                     if ((cp.getCoins() - 300000) >= 0) {
                         cp.removeCoins(300000);
-                        cp.getScoreboard().reload();
                         bp.getInventory().addItem(new ItemBuilder(Material.MONSTER_EGG, 1, 58).displayName("§5Enderman-SpawnEi").create());
 
                         bp.closeInventory();

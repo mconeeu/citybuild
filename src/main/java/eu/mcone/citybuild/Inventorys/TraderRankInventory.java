@@ -141,7 +141,6 @@ public class TraderRankInventory extends CoreInventory {
                         p.closeInventory();
                         p.playSound(p.getLocation(), Sound.LEVEL_UP, 1, 1);
                         p.sendMessage("§8[§7§l!§8] §fSystem §8» §7Du hast den §eDELUXE-RANG §7erfolgreich gekauft!");
-                        cp.getScoreboard().reload();
                     } else {
                         p.sendMessage("§8[§7§l!§8] §fSystem §8» §4Du hast nicht genügend Coins");
                     }

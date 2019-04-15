@@ -105,7 +105,6 @@ public class TraderEatInventory extends CoreInventory {
 
                     if (cp.getCoins() - 25 >= 0) {
                         cp.removeCoins(25);
-                        cp.getScoreboard().reload();
                         p.getInventory().addItem(new ItemBuilder(Material.BREAD, 32, 0).displayName("§9Brot").create());
 
 
@@ -123,7 +122,6 @@ public class TraderEatInventory extends CoreInventory {
 
                     if (cp.getCoins() - 100 >= 0) {
                         cp.removeCoins(100);
-                        cp.getScoreboard().reload();
                         p.getInventory().addItem(new ItemBuilder(Material.CAKE, 32, 0).displayName("§9Kuchen").create());
 
 

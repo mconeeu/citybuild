@@ -106,7 +106,6 @@ public class TraderExclusiveItems extends CoreInventory {
 
                     if ((cp.getCoins() - 500000) >= 0) {
                         cp.removeCoins(500000);
-                        cp.getScoreboard().reload();
                         p.getInventory().addItem(new ItemBuilder(Material.MOB_SPAWNER, 1, 0).displayName("§cMobSpawner").create());
 
                         p.playSound(p.getLocation(), Sound.LEVEL_UP, 1, 1);
@@ -122,7 +121,6 @@ public class TraderExclusiveItems extends CoreInventory {
 
                     if ((cp.getCoins() - 400000) >= 0) {
                         cp.removeCoins(400000);
-                        cp.getScoreboard().reload();
                         p.getInventory().addItem(new ItemBuilder(Material.BEACON, 1, 0).displayName("§bBeacon").create());
 
                         p.playSound(p.getLocation(), Sound.LEVEL_UP, 1, 1);
@@ -138,7 +136,6 @@ public class TraderExclusiveItems extends CoreInventory {
 
                     if ((cp.getCoins() - 200000) >= 0) {
                         cp.removeCoins(200000);
-                        cp.getScoreboard().reload();
                         p.getInventory().addItem(new ItemBuilder(Material.DRAGON_EGG, 1, 0).displayName("§5Drachenei").create());
 
                         p.playSound(p.getLocation(), Sound.LEVEL_UP, 1, 1);

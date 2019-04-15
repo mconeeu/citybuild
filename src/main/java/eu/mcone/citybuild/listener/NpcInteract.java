@@ -8,7 +8,6 @@ import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import sun.applet.Main;
 
 public class NpcInteract implements Listener {
 

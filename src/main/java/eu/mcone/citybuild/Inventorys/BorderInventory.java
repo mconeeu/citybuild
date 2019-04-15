@@ -10,6 +10,7 @@ import eu.mcone.coresystem.api.bukkit.player.CorePlayer;
 import eu.mcone.coresystem.api.bukkit.util.ItemBuilder;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
+import org.bukkit.scoreboard.DisplaySlot;
 
 public class BorderInventory extends CoreInventory {
 
@@ -46,7 +47,6 @@ public class BorderInventory extends CoreInventory {
             plot.setComponent("border", Configuration.BLOCKLIST.parseString(blockData));
 
             Citybuild.getInstance().getMessager().send(p, "§2Der Rand wurde erfolgreich gesetzt!");
-            cp.getScoreboard().reload();
         } else {
             Citybuild.getInstance().getMessager().send(p, "§4Du hast nicht genügend Coins!");
         }
