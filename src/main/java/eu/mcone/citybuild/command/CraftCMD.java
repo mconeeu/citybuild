@@ -14,7 +14,7 @@ public class CraftCMD extends CorePlayerCommand {
     @Override
     public boolean onPlayerCommand(Player p, String[] args) {
 
-        if (p.hasPermission("craft.use")) {
+        if (p.hasPermission("citybuild.use")) {
             p.openWorkbench(null, true);
             p.playSound(p.getLocation(), Sound.CHEST_OPEN, 1, 1);
             return true;
