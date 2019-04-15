@@ -20,7 +20,7 @@ public class PayCMD extends CorePlayerCommand {
             int amount = Integer.parseInt(args[1]);
 
             if (args[0].equals("*")) {
-                if (p.getCoins() - (amount * Bukkit.getOnlinePlayers().size()) >= 0) {
+                if (p.getCoins() - (amount * (Bukkit.getOnlinePlayers().size()) - 1) >= 0) {
                     for (CorePlayer t : CoreSystem.getInstance().getOnlineCorePlayers()) {
                         if (t != p) {
                             t.addCoins(amount);
