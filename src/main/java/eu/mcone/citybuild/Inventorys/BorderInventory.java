@@ -46,6 +46,7 @@ public class BorderInventory extends CoreInventory {
             plot.setComponent("border", Configuration.BLOCKLIST.parseString(blockData));
 
             Citybuild.getInstance().getMessager().send(p, "§2Der Rand wurde erfolgreich gesetzt!");
+            cp.getScoreboard().reload();
         } else {
             Citybuild.getInstance().getMessager().send(p, "§4Du hast nicht genügend Coins!");
         }

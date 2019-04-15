@@ -93,7 +93,9 @@ public class TraderInventory extends CoreInventory {
                     new AdverisingModeInventory(p);
 
 
+
                 });
+
 
 
 
@@ -109,9 +111,9 @@ public class TraderInventory extends CoreInventory {
 
                         p.closeInventory();
                         p.playSound(p.getLocation(), Sound.LEVEL_UP, 1, 1);
-                        p.sendMessage("Du hast das Item erfolgreich gekauft");
+                        cp.getScoreboard().reload();
                     } else {
-                        p.sendMessage("Du hast nicht genügend Coins");
+                        p.sendMessage("§cDu hast nicht genügend Coins");
                     }
                 });
 
@@ -125,9 +127,9 @@ public class TraderInventory extends CoreInventory {
 
                         p.closeInventory();
                         p.playSound(p.getLocation(), Sound.LEVEL_UP, 1, 1);
-                        p.sendMessage("Du hast das Item erfolgreich gekauft");
+                        cp.getScoreboard().reload();
                     } else {
-                        p.sendMessage("Du hast nicht genügend Coins");
+                        p.sendMessage("§cDu hast nicht genügend Coins");
                     }
                 });
 
@@ -142,9 +144,9 @@ public class TraderInventory extends CoreInventory {
 
                         p.closeInventory();
                         p.playSound(p.getLocation(), Sound.LEVEL_UP, 1, 1);
-                        p.sendMessage("Du hast das Item erfolgreich gekauft");
+                        cp.getScoreboard().reload();
                     } else {
-                        p.sendMessage("Du hast nicht genügend Coins");
+                        p.sendMessage("§cDu hast nicht genügend Coins");
                     }
 
                 });
@@ -159,9 +161,9 @@ public class TraderInventory extends CoreInventory {
 
                         p.closeInventory();
                         p.playSound(p.getLocation(), Sound.LEVEL_UP, 1, 1);
-                        p.sendMessage("Du hast das Item erfolgreich gekauft");
+                        cp.getScoreboard().reload();
                     } else {
-                        p.sendMessage("Du hast nicht genügend Coins");
+                        p.sendMessage("§cDu hast nicht genügend Coins");
                     }
 
                 });
@@ -176,9 +178,9 @@ public class TraderInventory extends CoreInventory {
 
                         p.closeInventory();
                         p.playSound(p.getLocation(), Sound.LEVEL_UP, 1, 1);
-                        p.sendMessage("Du hast das Item erfolgreich gekauft");
+                        cp.getScoreboard().reload();
                     } else {
-                        p.sendMessage("Du hast nicht genügend Coins");
+                        p.sendMessage("§cDu hast nicht genügend Coins");
                     }
 
                 });

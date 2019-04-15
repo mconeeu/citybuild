@@ -24,6 +24,7 @@ public class HeadInventory extends CoreInventory {
 
                     if (cp.getCoins() - 25000 >= 0) {
                         cp.removeCoins(25000);
+                        cp.getScoreboard().reload();
                         p.getInventory().addItem(ItemBuilder.createSkullItem(playername, 1).displayName("§f§l" + playername + "´s Kopf").create());
 
                         p.closeInventory();

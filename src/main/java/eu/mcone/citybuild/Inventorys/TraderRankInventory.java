@@ -11,11 +11,12 @@ import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemFlag;
 
-public class TraderEatInventory extends CoreInventory {
+public class TraderRankInventory extends CoreInventory {
 
 
-    public TraderEatInventory(Player p) {
-        super("§8» §e§lHändler §8| §fEssen", p, InventorySlot.ROW_6);
+    public TraderRankInventory(Player p) {
+        super("§8» §e§lHändler §8| §fRang", p, InventorySlot.ROW_6);
+
 
         CorePlayer cp = CoreSystem.getInstance().getCorePlayer(p);
 
@@ -63,16 +64,16 @@ public class TraderEatInventory extends CoreInventory {
         setItem(InventorySlot.ROW_2_SLOT_1, new ItemBuilder(Material.MONSTER_EGG, 1, 0).displayName("§c§lTierspawn-Items").lore("§7§oKaufe dir hier Tier Spawneggs.", "§7§oDie Items stehen dir danach in", "§7§odeinem Inventar zur Verfügung.").create(),
                 e -> {
 
-
                     p.playSound(p.getLocation(), Sound.CHICKEN_EGG_POP, 1, 1);
                     new TraderPetsInventory(p);
 
                 });
 
-        setItem(InventorySlot.ROW_3_SLOT_1, new ItemBuilder(Material.BREAD, 1, 0).displayName("§c§lEss-Items").lore("§7§oKaufe dir hier Essen.", "§7§oDie Items stehen dir danach in", "§7§odein Inventar zu verfügung.").enchantment(Enchantment.DAMAGE_ALL, 5).unbreakable(true).itemFlags(ItemFlag.HIDE_ENCHANTS, ItemFlag.HIDE_UNBREAKABLE).create(),
+        setItem(InventorySlot.ROW_3_SLOT_1, new ItemBuilder(Material.BREAD, 1, 0).displayName("§c§lEss-Items").lore("§7§oKaufe dir hier Essen.", "§7§oDie Items stehen dir danach in", "§7§odein Inventar zu verfügung.").create(),
                 e -> {
 
-                    p.playSound(p.getLocation(), Sound.NOTE_BASS, 1, 1);
+                    p.playSound(p.getLocation(), Sound.CHICKEN_EGG_POP, 1, 1);
+                    new TraderEatInventory(p);
 
 
                 });
@@ -96,47 +97,56 @@ public class TraderEatInventory extends CoreInventory {
                 });
 
 
+        //////////////////////////////////
 
 
-
-
-        setItem(InventorySlot.ROW_2_SLOT_3, new ItemBuilder(Material.BREAD, 32, 0).displayName("§f§l32x Brot").lore("", "§6§o25 Coins").create(),
+        setItem(InventorySlot.ROW_6_SLOT_1, new ItemBuilder(Material.GOLDEN_APPLE, 1, 0).displayName("§c§lDELUXE-RANG").lore("§7§oKaufe dir hier", "§7§oden DELUXE RANG", "§7§ofür Coins!.").enchantment(Enchantment.DAMAGE_ALL, 5).unbreakable(true).itemFlags(ItemFlag.HIDE_ENCHANTS, ItemFlag.HIDE_UNBREAKABLE).create(),
                 e -> {
 
-                    if (cp.getCoins() - 25 >= 0) {
-                        cp.removeCoins(25);
-                        cp.getScoreboard().reload();
-                        p.getInventory().addItem(new ItemBuilder(Material.BREAD, 32, 0).displayName("§9Brot").create());
+                    p.playSound(p.getLocation(), Sound.NOTE_BASS, 1, 1);
+
+
+                });
+
+
+        /////////////////////////////////
+
+
+        setItem(InventorySlot.ROW_4_SLOT_5, new ItemBuilder(Material.GOLDEN_APPLE, 1, 0)
+                        .displayName("§e§lDELUXE RANG")
+                        .lore(
+                                "",
+                                "§f§oMit diesem EXKLUSIVEN RANG erhälst du",
+                                "§f§ofolgende Items:",
+                                "",
+                                "§6» §7/premium",
+                                "§6» §7",
+                                "§6» §7",
+                                "§6» §7",
+                                "§6» §7",
+                                "§6» §7",
+                                "",
+                                "§fKosten: §31.000.000 Coins",
+                                "",
+                                "§4§lACHTUNG DER RANG GILT NUR FÜR 4 WOCHEN! UND DER RANG GILT NUR AUF CITYBUILD!!"
+                        )
+
+                        .create(),
+
+                e -> {
+                    if (cp.getCoins() - 1000000 >= 0) {
+                        cp.removeCoins(1000000);
 
 
                         p.closeInventory();
                         p.playSound(p.getLocation(), Sound.LEVEL_UP, 1, 1);
-                        p.sendMessage("§8[§7§l!§8] §fSystem §8» §7Du hast das Item §aerfolgreich §7gekauft");
-                    } else {
-                        p.sendMessage("§8[§7§l!§8] §fSystem §8» §7Du hast nicht genügend Coins");
-                    }
-
-                });
-
-        setItem(InventorySlot.ROW_2_SLOT_4, new ItemBuilder(Material.CAKE, 32, 0).displayName("§f§l32x Kuchen").lore("", "§6§o100 Coins").create(),
-                e -> {
-
-                    if (cp.getCoins() - 100 >= 0) {
-                        cp.removeCoins(100);
+                        p.sendMessage("§8[§7§l!§8] §fSystem §8» §7Du hast den §eDELUXE-RANG §7erfolgreich gekauft!");
                         cp.getScoreboard().reload();
-                        p.getInventory().addItem(new ItemBuilder(Material.CAKE, 32, 0).displayName("§9Kuchen").create());
-
-
-                        p.closeInventory();
-                        p.playSound(p.getLocation(), Sound.LEVEL_UP, 1, 1);
-                        p.sendMessage("§8[§7§l!§8] §fSystem §8» §7Du hast das Item §aerfolgreich §7gekauft");
                     } else {
-                        p.sendMessage("§8[§7§l!§8] §fSystem §8» §7Du hast nicht genügend Coins");
+                        p.sendMessage("§8[§7§l!§8] §fSystem §8» §4Du hast nicht genügend Coins");
                     }
-
                 });
 
-        openInventory();
 
     }
 }

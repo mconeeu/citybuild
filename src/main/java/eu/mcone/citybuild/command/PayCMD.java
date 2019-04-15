@@ -23,7 +23,9 @@ public class PayCMD extends CorePlayerCommand {
                 if (p != t) {
                     if ((p.getCoins() - amount) >= 0) {
                         p.removeCoins(amount);
+                        p.getScoreboard().reload();
                         t.addCoins(amount);
+                        t.getScoreboard().reload();
 
                         p.sendMessage("§8[§7§l!§8] §fSystem §8» §7Du hast §e" + t.getName() + " §aerfolgreich §e" + amount + "§a Coins gegeben!");
                         t.sendMessage("§8[§7§l!§8] §fSystem §8» §7Du hast §e" + amount + " §6Coins §avon §e" + p.getName() + "§a bekommen!");
