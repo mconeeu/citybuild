@@ -22,10 +22,12 @@ public class PayCMD extends CorePlayerCommand {
             if (args[0].equals("*")) {
                 if (p.getCoins() - (amount * Bukkit.getOnlinePlayers().size()) >= 0) {
                     for (CorePlayer t : CoreSystem.getInstance().getOnlineCorePlayers()) {
-                        t.addCoins(amount);
-                        p.removeCoins(amount);
+                        if (t != p) {
+                            t.addCoins(amount);
+                            p.removeCoins(amount);
 
-                        t.sendMessage("§8[§7§l!§8] §fSystem §8» §7Du hast §e" + amount + " §6Coins §avon §e" + p.getName() + "§a bekommen!");
+                            t.sendMessage("§8[§7§l!§8] §fSystem §8» §7Du hast §e" + amount + " §6Coins §avon §e" + p.getName() + "§a bekommen!");
+                        }
                     }
 
                     p.sendMessage("§8[§7§l!§8] §fSystem §8» §7Du hast §eallen Spielern §aerfolgreich §e" + amount + "§a Coins gegeben!");
