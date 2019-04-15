@@ -18,6 +18,10 @@ public class BorderInventory extends CoreInventory {
         setItem(InventorySlot.ROW_1_SLOT_3, new ItemBuilder(Material.GLOWSTONE, 1).displayName("§eGlowstone Rand").lore("§7Für §31000 Coins §7verfügbar!").create(), e -> setRand(plot, "331"));
         setItem(InventorySlot.ROW_1_SLOT_4, new ItemBuilder(Material.BEACON,1).displayName("§eBeacon Rand").lore("§7Für §35000 Coins §7verfügbar!").create(), e -> setRand(plot,"138"));
         setItem(InventorySlot.ROW_1_SLOT_4, new ItemBuilder(Material.SEA_LANTERN,1).displayName("§eSee-Laternen Rand").lore("§7Für §35000 Coins §7verfügbar!").create(), e -> setRand(plot,"169"));
+        setItem(InventorySlot.ROW_1_SLOT_4, new ItemBuilder(Material.ENDER_STONE,1).displayName("§eEndstone Rand").lore("§7Für §35000 Coins §7verfügbar!").create(), e -> setRand(plot,"121"));
+        setItem(InventorySlot.ROW_1_SLOT_4, new ItemBuilder(Material.BEDROCK,1).displayName("§eBedrock Rand").lore("§7Für §35000 Coins §7verfügbar!").create(), e -> setRand(plot,"7"));
+        setItem(InventorySlot.ROW_1_SLOT_4, new ItemBuilder(Material.CAKE,1).displayName("§eKuchen Rand").lore("§7Für §310000 Coins §7verfügbar!").create(), e -> setRand(plot,"354"));
+
         openInventory();
     }
 
