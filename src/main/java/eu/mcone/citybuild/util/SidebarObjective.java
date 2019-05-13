@@ -32,4 +32,5 @@ public class SidebarObjective extends CoreSidebarObjective {
         setScore(8, " §f"+ Bukkit.getOnlinePlayers().size() + "/" + Bukkit.getServer().getMaxPlayers());
         setScore(5, " §a"+ player.getFormattedCoins());
     }
+
 }

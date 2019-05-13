@@ -40,7 +40,7 @@ public class Citybuild extends CorePlugin {
                 new BorderCMD(),
                 new CraftCMD()
         );
-        CoreSystem.getInstance().enableSpawnCommand(plotWorld);
+        CoreSystem.getInstance().enableSpawnCommand(this, plotWorld, 3);
 
         registerEvents(
                 new NpcInteract(),
