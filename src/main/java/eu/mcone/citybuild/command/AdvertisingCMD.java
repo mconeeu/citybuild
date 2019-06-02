@@ -7,13 +7,10 @@ import org.bukkit.entity.Player;
 
 public class AdvertisingCMD extends CorePlayerCommand {
 
-
-
     public AdvertisingCMD() {
         super("werbung");
         CoreSystem.getInstance().getCooldownSystem().setCustomCooldownFor(getClass(), 190);
     }
-
 
     @Override
     public boolean onPlayerCommand(Player p, String[] args) {

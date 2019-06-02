@@ -6,17 +6,14 @@ import org.bukkit.entity.Player;
 
 public class FarmWorldCMD extends CorePlayerCommand {
 
-    public FarmWorldCMD() { super("farmwelt");
+    public FarmWorldCMD() {
+        super("farmwelt");
     }
 
 
     @Override
     public boolean onPlayerCommand(Player p, String[] strings) {
-
         p.teleport(Bukkit.getWorld("Farmwelt").getSpawnLocation());
-
-        return false;
-
-
+        return true;
     }
 }

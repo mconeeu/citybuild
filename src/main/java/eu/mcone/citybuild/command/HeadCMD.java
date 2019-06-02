@@ -1,5 +1,6 @@
 package eu.mcone.citybuild.command;
 
+import eu.mcone.citybuild.Citybuild;
 import eu.mcone.citybuild.Inventorys.HeadInventory;
 import eu.mcone.coresystem.api.bukkit.CoreSystem;
 import eu.mcone.coresystem.api.bukkit.command.CorePlayerCommand;
@@ -16,7 +17,7 @@ public class HeadCMD extends CorePlayerCommand {
     @Override
     public boolean onPlayerCommand(Player p, String[] args) {
         if (args.length == 0) {
-            p.sendMessage("§8[§7§l!§8] §fSystem §8» §7Bitte benutze /head [name]");
+            Citybuild.getInstance().getMessager().send(p, "§4Bitte benutze: §c/head <name>");
             return true;
         }
 
@@ -24,7 +25,7 @@ public class HeadCMD extends CorePlayerCommand {
         if ((cp.getCoins() - 25000) >= 0) {
             new HeadInventory(p, args[0]);
         } else {
-            p.sendMessage("§8[§7§l!§8] §fSystem §8» §7Du hast nicht genügend Coins");
+            Citybuild.getInstance().getMessager().send(p, "§4Du hast nicht genügend Coins!");
         }
 
         return false;

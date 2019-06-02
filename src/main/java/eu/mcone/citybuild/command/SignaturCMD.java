@@ -1,5 +1,6 @@
 package eu.mcone.citybuild.command;
 
+import eu.mcone.citybuild.Citybuild;
 import eu.mcone.coresystem.api.bukkit.CoreSystem;
 import eu.mcone.coresystem.api.bukkit.command.CorePlayerCommand;
 import eu.mcone.coresystem.api.bukkit.player.CorePlayer;
@@ -10,8 +11,6 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -41,16 +40,15 @@ public class SignaturCMD extends CorePlayerCommand {
                     i.setItemMeta(meta);
 
                     cp.removeCoins(1000);
-                    p.sendMessage("§8[§7§l!§8] §fSystem §8» §7Du hast das Item §aerfolgreich §7signiert");
-
+                    Citybuild.getInstance().getMessager().send(p, "§2Du hast das Item erfolgreich signiert");
                 } else {
-                    p.sendMessage("§8[§7§l!§8] §fSystem §8» §7Das Item ist schon signiert");
+                    Citybuild.getInstance().getMessager().send(p, "§4Das Item ist bereits signiert");
                 }
             } else {
-                p.sendMessage("§8[§7§l!§8] §fSystem §8» §7Du hast kein Item in der Hand");
+                Citybuild.getInstance().getMessager().send(p, "§4Du hast kein Item in der Hand");
             }
         } else {
-            p.sendMessage("§8[§7§l!§8] §fSystem §8» §7Du hast nicht genügend Coins");
+            Citybuild.getInstance().getMessager().send(p, "§4Du hast nicht genügend Coins");
         }
 
         return false;
