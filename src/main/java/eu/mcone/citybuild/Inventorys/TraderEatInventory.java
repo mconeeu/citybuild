@@ -95,7 +95,14 @@ public class TraderEatInventory extends CoreInventory {
 
                 });
 
+        setItem(InventorySlot.ROW_6_SLOT_1, new ItemBuilder(Material.STICK, 1, 0).displayName("§c§lPerks").lore("§7§oKaufe dir hier", "§7§oPerks", "§7§ofür Exklusiven Spiel spaß!.").enchantment(Enchantment.DAMAGE_ALL, 5).unbreakable(true).itemFlags(ItemFlag.HIDE_ENCHANTS, ItemFlag.HIDE_UNBREAKABLE).create(),
+                e -> {
 
+                   p.playSound(p.getLocation(), Sound.CHICKEN_EGG_POP,1,1);
+                   new TraderPerksInventory(p);
+
+
+                });
 
 
 

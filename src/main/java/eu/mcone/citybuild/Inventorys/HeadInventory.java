@@ -19,11 +19,11 @@ public class HeadInventory extends CoreInventory {
         setItem(InventorySlot.ROW_1_SLOT_5, ItemBuilder.createSkullItem(playername, 1).create());
 
 
-        setItem(InventorySlot.ROW_1_SLOT_7, new ItemBuilder(Material.STAINED_GLASS_PANE, 1, 5).displayName("§a§lKaufen").lore("§6§o25.000 Coins").create(),
+        setItem(InventorySlot.ROW_1_SLOT_7, new ItemBuilder(Material.STAINED_GLASS_PANE, 1, 5).displayName("§a§lKaufen").lore("§6§o35.000 Coins").create(),
                 e -> {
 
-                    if (cp.getCoins() - 25000 >= 0) {
-                        cp.removeCoins(25000);
+                    if (cp.getCoins() - 35000 >= 0) {
+                        cp.removeCoins(35000);
                         p.getInventory().addItem(ItemBuilder.createSkullItem(playername, 1).displayName("§f§l" + playername + "´s Kopf").create());
 
                         p.closeInventory();

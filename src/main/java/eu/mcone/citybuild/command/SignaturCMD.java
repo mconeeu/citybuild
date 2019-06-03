@@ -23,6 +23,7 @@ public class SignaturCMD extends CorePlayerCommand {
 
     @Override
     public boolean onPlayerCommand(Player p, String[] args) {
+        CoreSystem.getInstance().getCooldownSystem().setCustomCooldownFor(getClass(), 180);
 
         CorePlayer cp = CoreSystem.getInstance().getCorePlayer(p);
 
@@ -40,15 +41,15 @@ public class SignaturCMD extends CorePlayerCommand {
                     i.setItemMeta(meta);
 
                     cp.removeCoins(1000);
-                    Citybuild.getInstance().getMessager().send(p, "§2Du hast das Item erfolgreich signiert");
+                    Citybuild.getInstance().getMessager().send(p, "§8[§7§l!§8] §fSystem §8» §3Du hast das Item erfolgreich signiert");
                 } else {
-                    Citybuild.getInstance().getMessager().send(p, "§4Das Item ist bereits signiert");
+                    Citybuild.getInstance().getMessager().send(p, "§8[§7§l!§8] §fSystem §8» §cDas Item ist bereits signiert, kauf dir eine Brille!");
                 }
             } else {
-                Citybuild.getInstance().getMessager().send(p, "§4Du hast kein Item in der Hand");
+                Citybuild.getInstance().getMessager().send(p, "§8[§7§l!§8] §fSystem §8» §cDu hast kein Item in der Hand");
             }
         } else {
-            Citybuild.getInstance().getMessager().send(p, "§4Du hast nicht genügend Coins");
+            Citybuild.getInstance().getMessager().send(p, "§8[§7§l!§8] §fSystem §8» §cDu hast nicht genügend Coins");
         }
 
         return false;

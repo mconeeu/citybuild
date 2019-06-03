@@ -11,10 +11,10 @@ import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemFlag;
 
-public class TraderExclusiveItems extends CoreInventory {
+public class TraderPerksInventory extends CoreInventory {
 
-    public TraderExclusiveItems(Player p) {
-        super("§8» §e§lHändler §8| §fExklusives", p, InventorySlot.ROW_6);
+    public TraderPerksInventory(Player p) {
+        super("§8» §e§lHändler §8| §fPerks", p, InventorySlot.ROW_6);
 
 
         CorePlayer cp = CoreSystem.getInstance().getCorePlayer(p);
@@ -52,11 +52,10 @@ public class TraderExclusiveItems extends CoreInventory {
         setItem(52, new ItemBuilder(Material.STAINED_GLASS_PANE, 1, 7).displayName("§8//§oMCONE§8//").create());
         setItem(53, new ItemBuilder(Material.STAINED_GLASS_PANE, 1, 7).displayName("§8//§oMCONE§8//").create());
 
-        setItem(InventorySlot.ROW_1_SLOT_1, new ItemBuilder(Material.IRON_SWORD, 1, 0).displayName("§c§lÜberlebungs-Items").lore("§7§oKaufe dir hier Überlebens Items.", "§7§oDie Items stehen dir danach in", "§7§odein Inventar zu verfügung.").create(),
+        setItem(InventorySlot.ROW_1_SLOT_1, new ItemBuilder(Material.IRON_SWORD, 1, 0).displayName("§c§lÜberlebungs-Items").lore("§7§oKaufe dir hier Überlebens Items.", "§7§oDie Items stehen dir danach in", "§7§odein Inventar zu verfügung.").enchantment(Enchantment.DAMAGE_ALL, 5).unbreakable(true).itemFlags(ItemFlag.HIDE_ENCHANTS, ItemFlag.HIDE_UNBREAKABLE).create(),
                 e -> {
-
-                    p.playSound(p.getLocation(), Sound.CHICKEN_EGG_POP, 1, 1);
                     new TraderInventory(p);
+                    p.playSound(p.getLocation(), Sound.CHICKEN_EGG_POP,1,1);
 
                 });
 
@@ -68,7 +67,6 @@ public class TraderExclusiveItems extends CoreInventory {
 
                 });
 
-
         setItem(InventorySlot.ROW_3_SLOT_1, new ItemBuilder(Material.BREAD, 1, 0).displayName("§c§lEss-Items").lore("§7§oKaufe dir hier Essen.", "§7§oDie Items stehen dir danach in", "§7§odein Inventar zu verfügung.").create(),
                 e -> {
 
@@ -78,10 +76,11 @@ public class TraderExclusiveItems extends CoreInventory {
 
                 });
 
-        setItem(InventorySlot.ROW_4_SLOT_1, new ItemBuilder(Material.ENCHANTMENT_TABLE, 1, 0).displayName("§c§lExklusive-Items").lore("§7§oKaufe dir hier Exklusive Items.", "§7§oDie Items stehen dir danach in", "§7§odein Inventar zu verfügung.").enchantment(Enchantment.DAMAGE_ALL, 5).unbreakable(true).itemFlags(ItemFlag.HIDE_ENCHANTS, ItemFlag.HIDE_UNBREAKABLE).create(),
+        setItem(InventorySlot.ROW_4_SLOT_1, new ItemBuilder(Material.ENCHANTMENT_TABLE, 1, 0).displayName("§c§lExklusive-Items").lore("§7§oKaufe dir hier Exklusive Items.", "§7§oDie Items stehen dir danach in", "§7§odein Inventar zu verfügung.").create(),
                 e -> {
 
-                    p.playSound(p.getLocation(), Sound.NOTE_BASS, 1, 1);
+                    p.playSound(p.getLocation(), Sound.CHICKEN_EGG_POP, 1, 1);
+                    new TraderExclusiveItems(p);
 
 
                 });
@@ -93,66 +92,16 @@ public class TraderExclusiveItems extends CoreInventory {
                     new AdverisingModeInventory(p);
 
 
+
                 });
 
         setItem(InventorySlot.ROW_6_SLOT_1, new ItemBuilder(Material.STICK, 1, 0).displayName("§c§lPerks").lore("§7§oKaufe dir hier", "§7§oPerks", "§7§ofür Exklusiven Spiel spaß!.").enchantment(Enchantment.DAMAGE_ALL, 5).unbreakable(true).itemFlags(ItemFlag.HIDE_ENCHANTS, ItemFlag.HIDE_UNBREAKABLE).create(),
                 e -> {
 
-                    p.playSound(p.getLocation(), Sound.CHICKEN_EGG_POP,1,1);
-                    new TraderPerksInventory(p);
+                    p.playSound(p.getLocation(), Sound.NOTE_BASS, 1, 1);
 
 
                 });
 
-
-//////////////////////////////////////////
-
-        setItem(InventorySlot.ROW_2_SLOT_3, new ItemBuilder(Material.MOB_SPAWNER, 1, 0).displayName("§c§lMobSpawner").lore("", "§6§o5.000.000 Coins").create(),
-                e -> {
-
-
-                    if ((cp.getCoins() - 5000000) >= 0) {
-                        cp.removeCoins(5000000);
-                        p.getInventory().addItem(new ItemBuilder(Material.MOB_SPAWNER, 1, 0).displayName("§cMobspawner").create());
-
-                        p.playSound(p.getLocation(), Sound.LEVEL_UP, 1, 1);
-                        p.closeInventory();
-                    } else {
-                        p.sendMessage("§8[§7§l!§8] §fSystem §8» §7Du hast nicht genügend Coins!");
-                    }
-                });
-
-        setItem(InventorySlot.ROW_2_SLOT_4, new ItemBuilder(Material.BEACON, 1, 0).displayName("§b§lBeacon").lore("", "§6§o45.000 Coins").create(),
-                e -> {
-
-
-                    if ((cp.getCoins() - 45000) >= 0) {
-                        cp.removeCoins(45000);
-                        p.getInventory().addItem(new ItemBuilder(Material.BEACON, 1, 0).displayName("§bBeacon").create());
-
-                        p.playSound(p.getLocation(), Sound.LEVEL_UP, 1, 1);
-                        p.closeInventory();
-                    } else {
-                        p.sendMessage("§8[§7§l!§8] §fSystem §8» §7Du hast nicht genügend Coins!");
-                    }
-                });
-
-        setItem(InventorySlot.ROW_2_SLOT_5, new ItemBuilder(Material.DRAGON_EGG, 1, 0).displayName("§5§lDrachenEI").lore("", "§6§o500.000 Coins").create(),
-                e -> {
-
-
-                    if ((cp.getCoins() - 500000) >= 0) {
-                        cp.removeCoins(500000);
-                        p.getInventory().addItem(new ItemBuilder(Material.DRAGON_EGG, 1, 0).displayName("§5Drachenei").create());
-
-                        p.playSound(p.getLocation(), Sound.LEVEL_UP, 1, 1);
-                        p.closeInventory();
-                    } else {
-                        p.sendMessage("§8[§7§l!§8] §fSystem §8» §7Du hast nicht genügend Coins!");
-                    }
-                });
-
-
-        openInventory();
     }
 }

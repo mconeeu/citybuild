@@ -77,9 +77,9 @@ public class AdverisingModeLevelInventory extends CoreInventory {
     });
 
     enum Level {
-        DEFAULT(new ItemBuilder(Material.INK_SACK,1,8).displayName("§7Standard-Nachricht").lore("", "§7§oMit diesem Kauf erhälst du folgendes", "§6§oFür 250 Coins", "", "§7- §cEine gefärbte fette Nachricht").create(), 250),
-        EPIC(new ItemBuilder(Material.INK_SACK,1,5).displayName("§5Epische-Nachricht").lore("", "§7§oMit diesem Kauf erhälst du folgendes", "§6§oFür 1.000 Coins", "", "§7- §cEine gefärbte fette Nachricht", "§7- §cEine klickbare teleportations Nachricht").create(), 1000),
-        EXCLUSIVE(new ItemBuilder(Material.INK_SACK, 1,14).displayName("§6Exklusive-Nachricht").lore("", "§7§oMit diesem Kauf erhälst du folgendes", "§6§oFür 2.000 Coins", "", "§7- §cEine gefärbte fette Nachricht", "§7- §cEine klickbare teleportations Nachricht", "§7- §cEine eigene Nachricht mit allen Farben und Speziellen Features").create(), 2000);
+        DEFAULT(new ItemBuilder(Material.INK_SACK,1,8).displayName("§7Standard-Nachricht").lore("", "§7§oMit diesem Kauf erhälst du folgendes", "§6§oFür 1.000 Coins", "", "§7- §cEine gefärbte fette Nachricht").create(), 1000),
+        EPIC(new ItemBuilder(Material.INK_SACK,1,5).displayName("§5Epische-Nachricht").lore("", "§7§oMit diesem Kauf erhälst du folgendes", "§6§oFür 3.000 Coins", "", "§7- §cEine gefärbte fette Nachricht", "§7- §cEine klickbare teleportations Nachricht").create(), 3000),
+        EXCLUSIVE(new ItemBuilder(Material.INK_SACK, 1,14).displayName("§6Exklusive-Nachricht").lore("", "§7§oMit diesem Kauf erhälst du folgendes", "§6§oFür 5.000 Coins", "", "§7- §cEine gefärbte fette Nachricht", "§7- §cEine klickbare teleportations Nachricht", "§7- §cEine eigene Nachricht mit allen Farben und Speziellen Features").create(), 5000);
 
         ItemStack item;
         int coins;

@@ -36,14 +36,12 @@
             <url>http://ci.athion.net/job/PlotSquared-Legacy/ws/mvn/</url>
         </repository>
         <repository>
-            <id>sk89q-snapshots</id>
-            <url>http://maven.sk89q.com/artifactory/repo</url>
-            <releases>
-                <enabled>true</enabled> <!-- releases enabled: this specific repository also hosts release versions -->
-            </releases>
-            <snapshots>
-                <enabled>true</enabled> <!-- snapshots enabled: we declare a SNAPSHOT repository because we need to download a SNAPSHOT dependency -->
-            </snapshots>
+            <id>athion-repo-breaking</id>
+            <url>http://ci.athion.net/job/PlotSquared-Breaking/ws/mvn/</url>
+        </repository>
+        <repository>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
         </repository>
     </repositories>
 
@@ -67,10 +65,28 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
+            <groupId>com.github.intellectualsites.plotsquared</groupId>
+            <artifactId>PlotSquared-API</artifactId>
+            <version>latest</version>
+            <scope>provided</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.sk89q.worldedit</groupId>
+                    <artifactId>worldedit-core</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
             <groupId>com.plotsquared</groupId>
             <artifactId>plotsquared-api</artifactId>
             <version>latest</version>
             <scope>provided</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.sk89q.worldedit</groupId>
+                    <artifactId>worldedit-core</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
     </dependencies>
 

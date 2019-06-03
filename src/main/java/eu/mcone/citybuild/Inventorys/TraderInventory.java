@@ -96,6 +96,14 @@ public class TraderInventory extends CoreInventory {
 
                 });
 
+        setItem(InventorySlot.ROW_6_SLOT_1, new ItemBuilder(Material.STICK, 1, 0).displayName("§c§lPerks").lore("§7§oKaufe dir hier", "§7§oPerks", "§7§ofür Exklusiven Spiel spaß!.").enchantment(Enchantment.DAMAGE_ALL, 5).unbreakable(true).itemFlags(ItemFlag.HIDE_ENCHANTS, ItemFlag.HIDE_UNBREAKABLE).create(),
+                e -> {
+
+                    p.playSound(p.getLocation(), Sound.CHICKEN_EGG_POP,1,1);
+                    new TraderPerksInventory(p);
+
+
+                });
 
 
 
@@ -112,7 +120,7 @@ public class TraderInventory extends CoreInventory {
                         p.closeInventory();
                         p.playSound(p.getLocation(), Sound.LEVEL_UP, 1, 1);
                     } else {
-                        p.sendMessage("§cDu hast nicht genügend Coins");
+                        p.sendMessage("§8[§7§l!§8] §fSystem §8» §7Du hast nicht genügend Coins!");
                     }
                 });
 
@@ -127,7 +135,7 @@ public class TraderInventory extends CoreInventory {
                         p.closeInventory();
                         p.playSound(p.getLocation(), Sound.LEVEL_UP, 1, 1);
                     } else {
-                        p.sendMessage("§cDu hast nicht genügend Coins");
+                        p.sendMessage("§8[§7§l!§8] §fSystem §8» §7Du hast nicht genügend Coins!");
                     }
                 });
 
@@ -143,7 +151,7 @@ public class TraderInventory extends CoreInventory {
                         p.closeInventory();
                         p.playSound(p.getLocation(), Sound.LEVEL_UP, 1, 1);
                     } else {
-                        p.sendMessage("§cDu hast nicht genügend Coins");
+                        p.sendMessage("§8[§7§l!§8] §fSystem §8» §7Du hast nicht genügend Coins!");
                     }
 
                 });
@@ -159,7 +167,7 @@ public class TraderInventory extends CoreInventory {
                         p.closeInventory();
                         p.playSound(p.getLocation(), Sound.LEVEL_UP, 1, 1);
                     } else {
-                        p.sendMessage("§cDu hast nicht genügend Coins");
+                        p.sendMessage("§8[§7§l!§8] §fSystem §8» §7Du hast nicht genügend Coins!");
                     }
 
                 });
@@ -175,7 +183,7 @@ public class TraderInventory extends CoreInventory {
                         p.closeInventory();
                         p.playSound(p.getLocation(), Sound.LEVEL_UP, 1, 1);
                     } else {
-                        p.sendMessage("§cDu hast nicht genügend Coins");
+                        p.sendMessage("§8[§7§l!§8] §fSystem §8» §7Du hast nicht genügend Coins!");
                     }
 
                 });

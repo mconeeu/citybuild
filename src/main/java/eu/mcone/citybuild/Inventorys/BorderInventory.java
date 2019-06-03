@@ -46,9 +46,9 @@ public class BorderInventory extends CoreInventory {
             cp.removeCoins(price);
             plot.setComponent("border", Configuration.BLOCKLIST.parseString(blockData));
 
-            Citybuild.getInstance().getMessager().send(p, "§2Der Rand wurde erfolgreich gesetzt!");
+            Citybuild.getInstance().getMessager().send(p, "§8[§7§l!§8] §fSystem §8» §aDer Rand wurde erfolgreich gesetzt!");
         } else {
-            Citybuild.getInstance().getMessager().send(p, "§4Du hast nicht genügend Coins!");
+            Citybuild.getInstance().getMessager().send(p, "§8[§7§l!§8] §fSystem §8» §7Du hast nicht genügend Coins!");
         }
     }
 
