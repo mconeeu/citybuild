@@ -15,6 +15,13 @@ public class PlayerDeathListener implements Listener {
         if(p.hasPermission("citybuild.perks.keepinventory")) {
             e.setKeepInventory(true);
         }
+
+        if(p.hasPermission("citybuild.perks.keepxp")) {
+            e.setKeepLevel(true);
+
+
+        }
+
     }
 
 }

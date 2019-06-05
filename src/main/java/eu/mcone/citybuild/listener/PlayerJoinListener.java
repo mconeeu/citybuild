@@ -12,6 +12,8 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scoreboard.DisplaySlot;
 
 public class PlayerJoinListener implements Listener {
@@ -24,15 +26,39 @@ public class PlayerJoinListener implements Listener {
         Player p = e.getPlayer();
         CorePlayer cp = CoreSystem.getInstance().getCorePlayer(p);
 
+        p.setAllowFlight(true);
         if (p.hasPermission("citybuild.join.vanish")) {
             cp.setVanished(true);
         }
+
+        if (p.hasPermission("citybuild.perks.fireresistance")) {
+            p.addPotionEffect(new PotionEffect(PotionEffectType.FIRE_RESISTANCE, 999999, 1));
+        }
+
+        if (p.hasPermission("citybuild.perks.nightvision")) {
+            p.addPotionEffect(new PotionEffect(PotionEffectType.NIGHT_VISION, 999999, 1));
+        }
+
+        if (p.hasPermission("citybuild.perks.speed")) {
+            p.addPotionEffect(new PotionEffect(PotionEffectType.SPEED,999999 , 0));
+        }
+
+        if (p.hasPermission("citybuild.perks.aqua")) {
+            p.addPotionEffect(new PotionEffect(PotionEffectType.WATER_BREATHING,999999 , 0));
+        }
+
+        if (p.hasPermission("citybuild.perks.jumpboost")) {
+            p.addPotionEffect(new PotionEffect(PotionEffectType.JUMP,999999 , 0));
+        }
+
 
         for (CorePlayer t : CoreSystem.getInstance().getOnlineCorePlayers()) {
             if (t != cp) {
                 t.getScoreboard().getObjective(DisplaySlot.SIDEBAR).reload();
             }
         }
+
+
 
         LOADING_MSG.send(p);
 

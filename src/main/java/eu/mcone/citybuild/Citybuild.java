@@ -14,7 +14,11 @@ import eu.mcone.coresystem.api.bukkit.player.profile.interfaces.HomeManager;
 import eu.mcone.coresystem.api.bukkit.player.profile.interfaces.HomeManagerGetter;
 import eu.mcone.coresystem.api.bukkit.world.CoreWorld;
 import lombok.Getter;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.entity.Entity;
+import org.bukkit.entity.EntityType;
+import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
@@ -37,8 +41,36 @@ public class Citybuild extends CorePlugin implements HomeManagerGetter, Enderche
 
     @Override
     public void onEnable() {
+
+
+
         instance = this;
         players = new ArrayList<>();
+
+        Bukkit.getScheduler().runTaskTimerAsynchronously(this,() -> {
+            for (Player p : Bukkit.getOnlinePlayers()) {
+                getMessager().send(p, "§cIn einer Minute werden alle gedroppten Items gelöscht!");
+            }
+
+            Bukkit.getScheduler().runTaskLaterAsynchronously(this, () -> {
+                for (Player p : Bukkit.getOnlinePlayers()) {
+                    getMessager().send(p, "§cIn 10 Sekunden werden alle gedroppten Items gelöscht!");
+                }
+
+                Bukkit.getScheduler().runTaskLater(this, () -> {
+                    for (Entity e : plotWorld.bukkit().getEntities()) {
+                        if (e.getType().equals(EntityType.DROPPED_ITEM) || e.getType().equals(EntityType.MINECART) || e.getType().equals(EntityType.BOAT) || e.getType().equals(EntityType.EXPERIENCE_ORB)) {
+                            e.remove();
+                        }
+                    }
+
+                    for (Player p : Bukkit.getOnlinePlayers()) {
+                        getMessager().send(p, "§cAlle gedroppten Items wurden gelöscht!");
+                    }
+                }, 200);
+            }, 1000);
+        },0,4800);
+
 
         plotWorld = CoreSystem.getInstance().getWorldManager().getWorld("plots");
         CoreSystem.getInstance().getTranslationManager().loadCategories(this);
@@ -52,7 +84,8 @@ public class Citybuild extends CorePlugin implements HomeManagerGetter, Enderche
                 new FarmWorldCMD(),
                 new NetherCMD(),
                 new BorderCMD(),
-                new CraftCMD()
+                new CraftCMD(),
+                new BarriereCMD()
         );
         registerEvents(
                 new NpcInteract(),
@@ -62,7 +95,11 @@ public class Citybuild extends CorePlugin implements HomeManagerGetter, Enderche
                 new PlayerDeathListener(),
                 new PlayerRespawnListener(),
                 new PlayerQuitListener(),
-                new MoneyChangeListener()
+                new MoneyChangeListener(),
+                new PlayerDamageListener(),
+                new PlayerBlockBreakListener(),
+                new FoodChangeListener(),
+                new PlayerChatListener()
         );
         CoreSystem.getInstance().enableSpawnCommand(this, plotWorld, 3);
         CoreSystem.getInstance().enableTpaSystem(this, 3);
@@ -76,6 +113,7 @@ public class Citybuild extends CorePlugin implements HomeManagerGetter, Enderche
 
         sendConsoleMessage("§aVersion §f" + this.getDescription().getVersion() + "§a enabled!");
     }
+
 
     @Override
     public void onDisable() {
@@ -103,6 +141,8 @@ public class Citybuild extends CorePlugin implements HomeManagerGetter, Enderche
         }
         return null;
     }
+
+
 
     public Collection<CitybuildPlayer> getCitybuildPlayers() {
         return players;
