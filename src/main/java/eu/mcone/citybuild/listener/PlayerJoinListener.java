@@ -40,15 +40,11 @@ public class PlayerJoinListener implements Listener {
         }
 
         if (p.hasPermission("citybuild.perks.speed")) {
-            p.addPotionEffect(new PotionEffect(PotionEffectType.SPEED,999999 , 0));
+            p.setWalkSpeed(0.3F);
         }
 
         if (p.hasPermission("citybuild.perks.aqua")) {
             p.addPotionEffect(new PotionEffect(PotionEffectType.WATER_BREATHING,999999 , 0));
-        }
-
-        if (p.hasPermission("citybuild.perks.jumpboost")) {
-            p.addPotionEffect(new PotionEffect(PotionEffectType.JUMP,999999 , 0));
         }
 
 

@@ -28,7 +28,6 @@ public class SignaturCMD extends CorePlayerCommand {
         CorePlayer cp = CoreSystem.getInstance().getCorePlayer(p);
 
 
-        if (cp.getCoins() - 1000 >= 0) {
             if (p.getItemInHand() != null && !p.getItemInHand().getType().equals(Material.AIR)) {
                 ItemStack i = p.getItemInHand();
                 ItemMeta meta = i.hasItemMeta() ? i.getItemMeta() : Bukkit.getItemFactory().getItemMeta(i.getType());
@@ -40,7 +39,6 @@ public class SignaturCMD extends CorePlayerCommand {
 
                     i.setItemMeta(meta);
 
-                    cp.removeCoins(1000);
                     Citybuild.getInstance().getMessager().send(p, "§8[§7§l!§8] §fSystem §8» §3Du hast das Item erfolgreich signiert");
                 } else {
                     Citybuild.getInstance().getMessager().send(p, "§8[§7§l!§8] §fSystem §8» §cDas Item ist bereits signiert, kauf dir eine Brille!");
@@ -48,9 +46,7 @@ public class SignaturCMD extends CorePlayerCommand {
             } else {
                 Citybuild.getInstance().getMessager().send(p, "§8[§7§l!§8] §fSystem §8» §cDu hast kein Item in der Hand");
             }
-        } else {
-            Citybuild.getInstance().getMessager().send(p, "§8[§7§l!§8] §fSystem §8» §cDu hast nicht genügend Coins");
-        }
+
 
         return false;
     }

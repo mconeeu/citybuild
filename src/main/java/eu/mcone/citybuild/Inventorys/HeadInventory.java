@@ -3,8 +3,9 @@ package eu.mcone.citybuild.Inventorys;
 import eu.mcone.coresystem.api.bukkit.CoreSystem;
 import eu.mcone.coresystem.api.bukkit.inventory.CoreInventory;
 import eu.mcone.coresystem.api.bukkit.inventory.InventorySlot;
+import eu.mcone.coresystem.api.bukkit.item.Skull;
 import eu.mcone.coresystem.api.bukkit.player.CorePlayer;
-import eu.mcone.coresystem.api.bukkit.util.ItemBuilder;
+import eu.mcone.coresystem.api.bukkit.item.ItemBuilder;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
@@ -16,7 +17,7 @@ public class HeadInventory extends CoreInventory {
 
         CorePlayer cp = CoreSystem.getInstance().getCorePlayer(p);
 
-        setItem(InventorySlot.ROW_1_SLOT_5, ItemBuilder.createSkullItem(playername, 1).create());
+        setItem(InventorySlot.ROW_1_SLOT_5, new Skull(playername, 1).toItemBuilder().create());
 
 
         setItem(InventorySlot.ROW_1_SLOT_7, new ItemBuilder(Material.STAINED_GLASS_PANE, 1, 5).displayName("§a§lKaufen").lore("§6§o35.000 Coins").create(),
@@ -24,7 +25,7 @@ public class HeadInventory extends CoreInventory {
 
                     if (cp.getCoins() - 35000 >= 0) {
                         cp.removeCoins(35000);
-                        p.getInventory().addItem(ItemBuilder.createSkullItem(playername, 1).displayName("§f§l" + playername + "´s Kopf").create());
+                        p.getInventory().addItem(new Skull(playername, 1).toItemBuilder().displayName("§f§l" + playername + "´s Kopf").create());
 
                         p.closeInventory();
                         p.playSound(p.getLocation(), Sound.LEVEL_UP, 1, 1);

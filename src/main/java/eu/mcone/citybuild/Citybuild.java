@@ -74,6 +74,7 @@ public class Citybuild extends CorePlugin implements HomeManagerGetter, Enderche
 
         plotWorld = CoreSystem.getInstance().getWorldManager().getWorld("plots");
         CoreSystem.getInstance().getTranslationManager().loadCategories(this);
+        CoreSystem.getInstance().setPlayerChatEnabled(false);
 
         Broadcast.schedule();
 
