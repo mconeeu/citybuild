@@ -43,11 +43,10 @@ public class Citybuild extends CorePlugin implements HomeManagerGetter, Enderche
     public void onEnable() {
 
 
-
         instance = this;
         players = new ArrayList<>();
 
-        Bukkit.getScheduler().runTaskTimerAsynchronously(this,() -> {
+        Bukkit.getScheduler().runTaskTimerAsynchronously(this, () -> {
             for (Player p : Bukkit.getOnlinePlayers()) {
                 getMessager().send(p, "§cIn einer Minute werden alle gedroppten Items gelöscht!");
             }
@@ -69,7 +68,7 @@ public class Citybuild extends CorePlugin implements HomeManagerGetter, Enderche
                     }
                 }, 200);
             }, 1000);
-        },0,4800);
+        }, 0, 4800);
 
 
         plotWorld = CoreSystem.getInstance().getWorldManager().getWorld("plots");
@@ -86,7 +85,9 @@ public class Citybuild extends CorePlugin implements HomeManagerGetter, Enderche
                 new NetherCMD(),
                 new BorderCMD(),
                 new CraftCMD(),
-                new BarriereCMD()
+                new BarriereCMD(),
+                new SpecCMD(),
+                new BoosterCMD()
         );
         registerEvents(
                 new NpcInteract(),
@@ -142,7 +143,6 @@ public class Citybuild extends CorePlugin implements HomeManagerGetter, Enderche
         }
         return null;
     }
-
 
 
     public Collection<CitybuildPlayer> getCitybuildPlayers() {
