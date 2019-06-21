@@ -4,9 +4,11 @@ import eu.mcone.citybuild.command.*;
 import eu.mcone.citybuild.listener.*;
 import eu.mcone.citybuild.player.CitybuildPlayer;
 import eu.mcone.citybuild.util.Broadcast;
+import eu.mcone.citybuild.util.CityBuildConfig;
 import eu.mcone.citybuild.util.SidebarObjective;
 import eu.mcone.coresystem.api.bukkit.CorePlugin;
 import eu.mcone.coresystem.api.bukkit.CoreSystem;
+import eu.mcone.coresystem.api.bukkit.config.CoreJsonConfig;
 import eu.mcone.coresystem.api.bukkit.player.CorePlayer;
 import eu.mcone.coresystem.api.bukkit.player.profile.interfaces.EnderchestManager;
 import eu.mcone.coresystem.api.bukkit.player.profile.interfaces.EnderchestManagerGetter;
@@ -18,7 +20,6 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
-import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
@@ -35,14 +36,17 @@ public class Citybuild extends CorePlugin implements HomeManagerGetter, Enderche
     private CoreWorld plotWorld;
     private List<CitybuildPlayer> players;
 
+    @Getter
+    private CoreJsonConfig<CityBuildConfig> jsonCityBuildConfig;
+    @Getter
+    private CityBuildConfig cityBuildConfig;
+
     public Citybuild() {
         super("citybuild", ChatColor.AQUA, "citybuild.prefix");
     }
 
     @Override
     public void onEnable() {
-
-
         instance = this;
         players = new ArrayList<>();
 
@@ -69,6 +73,11 @@ public class Citybuild extends CorePlugin implements HomeManagerGetter, Enderche
                 }, 200);
             }, 1000);
         }, 0, 4800);
+
+        jsonCityBuildConfig = new CoreJsonConfig<>(this, CityBuildConfig.class, "cityBuild.json");
+        jsonCityBuildConfig.updateConfig(new CityBuildConfig((System.currentTimeMillis() / 1000) + 259200));
+        cityBuildConfig = jsonCityBuildConfig.parseConfig();
+
 
 
         plotWorld = CoreSystem.getInstance().getWorldManager().getWorld("plots");
