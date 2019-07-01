@@ -1,3 +1,8 @@
+/*
+ * Copyright (c) 2019 Marvin Hülsmann, Rufus Maiwald and the MC ONE Minecraftnetwork. All rights reserved
+ * You are not allowed to decompile the code
+ */
+
 package eu.mcone.citybuild.listener;
 
 import com.intellectualcrafters.plot.object.PlotPlayer;

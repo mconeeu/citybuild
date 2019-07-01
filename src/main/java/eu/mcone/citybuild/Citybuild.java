@@ -1,10 +1,16 @@
+/*
+ * Copyright (c) 2019 Marvin Hülsmann, Rufus Maiwald and the MC ONE Minecraftnetwork. All rights reserved
+ * You are not allowed to decompile the code
+ */
+
 package eu.mcone.citybuild;
 
 import eu.mcone.citybuild.command.*;
 import eu.mcone.citybuild.listener.*;
 import eu.mcone.citybuild.player.CitybuildPlayer;
-import eu.mcone.citybuild.util.Broadcast;
-import eu.mcone.citybuild.util.CityBuildConfig;
+import eu.mcone.citybuild.scheduler.Broadcast;
+import eu.mcone.citybuild.scheduler.ClearLag;
+import eu.mcone.citybuild.scheduler.WorldReset;
 import eu.mcone.citybuild.util.SidebarObjective;
 import eu.mcone.coresystem.api.bukkit.CorePlugin;
 import eu.mcone.coresystem.api.bukkit.CoreSystem;
@@ -15,11 +21,11 @@ import eu.mcone.coresystem.api.bukkit.player.profile.interfaces.EnderchestManage
 import eu.mcone.coresystem.api.bukkit.player.profile.interfaces.HomeManager;
 import eu.mcone.coresystem.api.bukkit.player.profile.interfaces.HomeManagerGetter;
 import eu.mcone.coresystem.api.bukkit.world.CoreWorld;
+import eu.mcone.coresystem.api.bukkit.world.WorldCreateProperties;
 import lombok.Getter;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
-import org.bukkit.entity.Entity;
-import org.bukkit.entity.EntityType;
+import org.bukkit.World;
 import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
@@ -34,12 +40,14 @@ public class Citybuild extends CorePlugin implements HomeManagerGetter, Enderche
 
     @Getter
     private CoreWorld plotWorld;
+    @Getter
+    private CoreWorld farmWorld;
+    @Getter
+    private CoreWorld nether;
     private List<CitybuildPlayer> players;
 
     @Getter
-    private CoreJsonConfig<CityBuildConfig> jsonCityBuildConfig;
-    @Getter
-    private CityBuildConfig cityBuildConfig;
+    private CoreJsonConfig citybuildConfig;
 
     public Citybuild() {
         super("citybuild", ChatColor.AQUA, "citybuild.prefix");
@@ -50,51 +58,26 @@ public class Citybuild extends CorePlugin implements HomeManagerGetter, Enderche
         instance = this;
         players = new ArrayList<>();
 
-        Bukkit.getScheduler().runTaskTimerAsynchronously(this, () -> {
-            for (Player p : Bukkit.getOnlinePlayers()) {
-                getMessager().send(p, "§cIn einer Minute werden alle gedroppten Items gelöscht!");
-            }
-
-            Bukkit.getScheduler().runTaskLaterAsynchronously(this, () -> {
-                for (Player p : Bukkit.getOnlinePlayers()) {
-                    getMessager().send(p, "§cIn 10 Sekunden werden alle gedroppten Items gelöscht!");
-                }
-
-                Bukkit.getScheduler().runTaskLater(this, () -> {
-                    for (Entity e : plotWorld.bukkit().getEntities()) {
-                        if (e.getType().equals(EntityType.DROPPED_ITEM) || e.getType().equals(EntityType.MINECART) || e.getType().equals(EntityType.BOAT) || e.getType().equals(EntityType.EXPERIENCE_ORB)) {
-                            e.remove();
-                        }
-                    }
-
-                    for (Player p : Bukkit.getOnlinePlayers()) {
-                        getMessager().send(p, "§cAlle gedroppten Items wurden gelöscht!");
-                    }
-                }, 200);
-            }, 1000);
-        }, 0, 4800);
-
-        jsonCityBuildConfig = new CoreJsonConfig<>(this, CityBuildConfig.class, "cityBuild.json");
-        jsonCityBuildConfig.updateConfig(new CityBuildConfig((System.currentTimeMillis() / 1000) + 259200));
-        cityBuildConfig = jsonCityBuildConfig.parseConfig();
-
-
+        citybuildConfig = new CoreJsonConfig(this, "config.json");
+        if (!citybuildConfig.getJson().getAsJsonObject().has("lastReset")) {
+            citybuildConfig.getJson().getAsJsonObject().addProperty("lastReset", System.currentTimeMillis() / 1000);
+            citybuildConfig.save();
+        }
 
         plotWorld = CoreSystem.getInstance().getWorldManager().getWorld("plots");
+        setWorlds();
+
         CoreSystem.getInstance().getTranslationManager().loadCategories(this);
-        CoreSystem.getInstance().setPlayerChatEnabled(false);
 
-        Broadcast.schedule();
-
+        sendConsoleMessage("§aRegistering Events & Commands & Scheduler...");
         registerCommands(
                 new HeadCMD(),
                 new AdvertisingCMD(),
-                new SignaturCMD(),
+                new SignCMD(),
                 new FarmWorldCMD(),
                 new NetherCMD(),
                 new BorderCMD(),
                 new CraftCMD(),
-                new BarriereCMD(),
                 new SpecCMD(),
                 new BoosterCMD()
         );
@@ -112,6 +95,10 @@ public class Citybuild extends CorePlugin implements HomeManagerGetter, Enderche
                 new FoodChangeListener(),
                 new PlayerChatListener()
         );
+        Bukkit.getScheduler().runTaskTimerAsynchronously(this, new WorldReset(), 0, 60 * 60 * 20);
+        Bukkit.getScheduler().runTaskTimerAsynchronously(this, new Broadcast(), 0, 3 * 60 * 20);
+        Bukkit.getScheduler().runTaskTimerAsynchronously(this, new ClearLag(), 0, 9 * 60 * 20);
+
         CoreSystem.getInstance().enableSpawnCommand(this, plotWorld, 3);
         CoreSystem.getInstance().enableTpaSystem(this, 3);
         CoreSystem.getInstance().enableEnderchestSystem(this);
@@ -128,8 +115,8 @@ public class Citybuild extends CorePlugin implements HomeManagerGetter, Enderche
 
     @Override
     public void onDisable() {
-        for (CitybuildPlayer sp : getCitybuildPlayers()) {
-            sp.saveData();
+        for (CitybuildPlayer cbp : getCitybuildPlayers()) {
+            cbp.saveData();
         }
 
         sendConsoleMessage("§cPlugin disabled!");
@@ -164,6 +151,23 @@ public class Citybuild extends CorePlugin implements HomeManagerGetter, Enderche
 
     public void unregisterCitybuildPlayer(CitybuildPlayer sp) {
         players.remove(sp);
+    }
+
+    public void unsetWorlds() {
+        this.farmWorld = null;
+        this.nether = null;
+    }
+
+    private void setWorlds() {
+        if (CoreSystem.getInstance().getWorldManager().getWorld("Farmworld") == null) {
+            CoreSystem.getInstance().getWorldManager().createWorld("Farmworld", WorldCreateProperties.builder().spawnAnimals(true).spawnMonsters(true).build());
+        }
+        if (CoreSystem.getInstance().getWorldManager().getWorld("Nether") == null) {
+            CoreSystem.getInstance().getWorldManager().createWorld("Nether", WorldCreateProperties.builder().environment(World.Environment.NETHER).spawnAnimals(true).spawnMonsters(true).build());
+        }
+
+        this.farmWorld = CoreSystem.getInstance().getWorldManager().getWorld("Farmworld");
+        this.nether = CoreSystem.getInstance().getWorldManager().getWorld("Nether");
     }
 
     @Override

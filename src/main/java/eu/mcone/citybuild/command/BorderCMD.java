@@ -1,9 +1,14 @@
+/*
+ * Copyright (c) 2019 Marvin Hülsmann, Rufus Maiwald and the MC ONE Minecraftnetwork. All rights reserved
+ * You are not allowed to decompile the code
+ */
+
 package eu.mcone.citybuild.command;
 
 import com.intellectualcrafters.plot.object.Plot;
 import com.intellectualcrafters.plot.object.PlotPlayer;
 import eu.mcone.citybuild.Citybuild;
-import eu.mcone.citybuild.Inventorys.BorderInventory;
+import eu.mcone.citybuild.Inventorys.border.BorderInventory;
 import eu.mcone.coresystem.api.bukkit.command.CorePlayerCommand;
 import org.bukkit.entity.Player;
 
@@ -14,7 +19,7 @@ public class BorderCMD extends CorePlayerCommand {
     }
 
     @Override
-    public boolean onPlayerCommand(Player p, String[] strings) {
+    public boolean onPlayerCommand(Player p, String[] args) {
         Plot plot = PlotPlayer.wrap(p).getCurrentPlot();
 
         if (plot != null) {
@@ -29,4 +34,5 @@ public class BorderCMD extends CorePlayerCommand {
 
         return false;
     }
+
 }

@@ -1,4 +1,9 @@
-package eu.mcone.citybuild.Inventorys;
+/*
+ * Copyright (c) 2019 Marvin Hülsmann, Rufus Maiwald and the MC ONE Minecraftnetwork. All rights reserved
+ * You are not allowed to decompile the code
+ */
+
+package eu.mcone.citybuild.Inventorys.advertising;
 
 import eu.mcone.coresystem.api.bukkit.CoreSystem;
 import eu.mcone.coresystem.api.bukkit.inventory.CoreInventory;

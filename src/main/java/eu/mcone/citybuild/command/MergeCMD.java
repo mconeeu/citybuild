@@ -1,3 +1,8 @@
+/*
+ * Copyright (c) 2019 Marvin Hülsmann, Rufus Maiwald and the MC ONE Minecraftnetwork. All rights reserved
+ * You are not allowed to decompile the code
+ */
+
 package eu.mcone.citybuild.command;
 
 import eu.mcone.coresystem.api.bukkit.command.CoreCommand;
@@ -9,17 +14,9 @@ public class MergeCMD extends CoreCommand {
         super("merge");
     }
 
-
     @Override
     public boolean onCommand(CommandSender commandSender, String[] strings) {
-
-
-
-
-
-
-        return false;
-
-
+        return true;
     }
+
 }

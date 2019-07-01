@@ -1,11 +1,15 @@
-package eu.mcone.citybuild.Inventorys;
+/*
+ * Copyright (c) 2019 Marvin Hülsmann, Rufus Maiwald and the MC ONE Minecraftnetwork. All rights reserved
+ * You are not allowed to decompile the code
+ */
+
+package eu.mcone.citybuild.Inventorys.advertising;
 
 import eu.mcone.coresystem.api.bukkit.inventory.CoreInventory;
 import eu.mcone.coresystem.api.bukkit.inventory.InventorySlot;
 import eu.mcone.coresystem.api.bukkit.item.ItemBuilder;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
-import org.bukkit.inventory.ItemStack;
 
 public class AdverisingModeInventory extends CoreInventory {
 
@@ -18,13 +22,13 @@ public class AdverisingModeInventory extends CoreInventory {
 
         setItem(InventorySlot.ROW_2_SLOT_7, new ItemBuilder(Material.ENCHANTMENT_TABLE).displayName("§5§lEin Event").create(), e -> {
             new AdverisingModeLevelInventory(p, Mode.EVENT);
-                });
+        });
 
         setItem(InventorySlot.ROW_2_SLOT_3, new ItemBuilder(Material.CHEST).displayName("§a§lEin Shop").create(), e -> {
             new AdverisingModeLevelInventory(p, Mode.SHOP);
-                });
+        });
 
-    openInventory();
-}
+        openInventory();
+    }
 
 }

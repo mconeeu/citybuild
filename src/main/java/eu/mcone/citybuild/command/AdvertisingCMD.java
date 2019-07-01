@@ -1,6 +1,11 @@
+/*
+ * Copyright (c) 2019 Marvin Hülsmann, Rufus Maiwald and the MC ONE Minecraftnetwork. All rights reserved
+ * You are not allowed to decompile the code
+ */
+
 package eu.mcone.citybuild.command;
 
-import eu.mcone.citybuild.Inventorys.AdverisingModeInventory;
+import eu.mcone.citybuild.Inventorys.advertising.AdverisingModeInventory;
 import eu.mcone.coresystem.api.bukkit.CoreSystem;
 import eu.mcone.coresystem.api.bukkit.command.CorePlayerCommand;
 import org.bukkit.entity.Player;

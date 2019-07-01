@@ -1,6 +1,11 @@
+/*
+ * Copyright (c) 2019 Marvin Hülsmann, Rufus Maiwald and the MC ONE Minecraftnetwork. All rights reserved
+ * You are not allowed to decompile the code
+ */
+
 package eu.mcone.citybuild.listener;
 
-import eu.mcone.citybuild.Inventorys.TraderInventory;
+import eu.mcone.citybuild.Inventorys.trader.TraderSurvivalInventory;
 import eu.mcone.coresystem.api.bukkit.event.NpcInteractEvent;
 import eu.mcone.coresystem.api.bukkit.npc.NPC;
 import net.minecraft.server.v1_8_R3.PacketPlayInUseEntity;
@@ -19,7 +24,7 @@ public class NpcInteract implements Listener {
         if (e.getNpc().getData().getType().equals(EntityType.PLAYER) && e.getAction().equals(PacketPlayInUseEntity.EnumEntityUseAction.INTERACT)) {
             switch (npc.getData().getName()) {
                 case "tradercb": {
-                    new TraderInventory(p);
+                    new TraderSurvivalInventory(p);
                     break;
                 }
             }
