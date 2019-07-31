@@ -26,7 +26,7 @@ public class HeadInventory extends CoreInventory {
         setItem(InventorySlot.ROW_1_SLOT_5, new Skull(playername, 1).toItemBuilder().create());
 
 
-        setItem(InventorySlot.ROW_1_SLOT_7, new ItemBuilder(Material.STAINED_GLASS_PANE, 1, 5).displayName("§a§lKaufen").lore("§6§o35.000 Coins").create(),
+        setItem(InventorySlot.ROW_1_SLOT_7, new ItemBuilder(Material.LIME_STAINED_GLASS_PANE, 1).displayName("§a§lKaufen").lore("§6§o35.000 Coins").create(),
                 e -> {
 
                     if (cp.getCoins() - 35000 >= 0) {
@@ -34,7 +34,7 @@ public class HeadInventory extends CoreInventory {
                         p.getInventory().addItem(new Skull(playername, 1).toItemBuilder().displayName("§f§l" + playername + "´s Kopf").create());
 
                         p.closeInventory();
-                        p.playSound(p.getLocation(), Sound.LEVEL_UP, 1, 1);
+                        p.playSound(p.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 1, 1);
                         p.sendMessage("§8[§7§l!§8] §fSystem §8» §aDu hast das Item erfolgreich gekauft");
                     } else {
                         p.sendMessage("§8[§7§l!§8] §fSystem §8» §7Du hast nicht genügend Coins!");
@@ -42,12 +42,12 @@ public class HeadInventory extends CoreInventory {
 
                 });
 
-        setItem(InventorySlot.ROW_1_SLOT_3, new ItemBuilder(Material.STAINED_GLASS_PANE, 1, 14).displayName("§c§lAbbrechen").lore("§6§oBreche den Kauf ab").create(),
+        setItem(InventorySlot.ROW_1_SLOT_3, new ItemBuilder(Material.LIME_STAINED_GLASS_PANE, 1).displayName("§c§lAbbrechen").lore("§6§oBreche den Kauf ab").create(),
                 e -> {
 
 
                     p.closeInventory();
-                    p.playSound(p.getLocation(), Sound.NOTE_BASS, 1, 1);
+                    p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_BASS, 1, 1);
                     p.sendMessage("§8[§7§l!§8] §fSystem §8» §cDu hast erfolgreich abgebrochen");
 
 

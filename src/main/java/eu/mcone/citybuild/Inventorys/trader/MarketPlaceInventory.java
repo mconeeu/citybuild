@@ -8,9 +8,9 @@ package eu.mcone.citybuild.Inventorys.trader;
 import eu.mcone.citybuild.item.ShopCategory;
 import org.bukkit.entity.Player;
 
-public class TraderMarketplaceInventory extends TraderInventory {
+public class MarketPlaceInventory extends TraderInventory {
 
-    public TraderMarketplaceInventory(Player p) {
+    public MarketPlaceInventory(Player p) {
         super(ShopCategory.MARKETPLACE, p);
         openInventory();
     }

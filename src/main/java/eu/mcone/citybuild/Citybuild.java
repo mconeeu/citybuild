@@ -79,7 +79,11 @@ public class Citybuild extends CorePlugin implements HomeManagerGetter, Enderche
                 new BorderCMD(),
                 new CraftCMD(),
                 new SpecCMD(),
-                new BoosterCMD()
+                new BoosterCMD(),
+                new ColorCMD(),
+                new XpCMD(),
+                new GlowCMD(),
+                new BroadcastCMD()
         );
         registerEvents(
                 new NpcInteract(),

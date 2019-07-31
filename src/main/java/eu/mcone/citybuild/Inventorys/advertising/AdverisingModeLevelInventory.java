@@ -59,7 +59,7 @@ public class AdverisingModeLevelInventory extends CoreInventory {
                         p.closeInventory();
                     }
                 } else {
-                    p.playSound(p.getLocation(), Sound.NOTE_BASS, 1, 1);
+                    p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_BASS, 1, 1);
                     e.getAnvilInventory().setItem(
                             AnvilSlot.OUTPUT.getSlot(),
                             new ItemBuilder(Material.BARRIER)
@@ -69,7 +69,7 @@ public class AdverisingModeLevelInventory extends CoreInventory {
                     );
                 }
             } else {
-                p.playSound(p.getLocation(), Sound.NOTE_BASS, 1, 1);
+                p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_BASS, 1, 1);
                 e.getAnvilInventory().setItem(
                         AnvilSlot.OUTPUT.getSlot(),
                         new ItemBuilder(Material.BARRIER)
@@ -82,9 +82,9 @@ public class AdverisingModeLevelInventory extends CoreInventory {
     });
 
     enum Level {
-        DEFAULT(new ItemBuilder(Material.INK_SACK,1,8).displayName("§7Standard-Nachricht").lore("", "§7§oMit diesem Kauf erhälst du folgendes", "§6§oFür 1.000 Coins", "", "§7- §cEine gefärbte fette Nachricht").create(), 1000),
-        EPIC(new ItemBuilder(Material.INK_SACK,1,5).displayName("§5Epische-Nachricht").lore("", "§7§oMit diesem Kauf erhälst du folgendes", "§6§oFür 3.000 Coins", "", "§7- §cEine gefärbte fette Nachricht", "§7- §cEine klickbare teleportations Nachricht").create(), 3000),
-        EXCLUSIVE(new ItemBuilder(Material.INK_SACK, 1,14).displayName("§6Exklusive-Nachricht").lore("", "§7§oMit diesem Kauf erhälst du folgendes", "§6§oFür 5.000 Coins", "", "§7- §cEine gefärbte fette Nachricht", "§7- §cEine klickbare teleportations Nachricht", "§7- §cEine eigene Nachricht mit allen Farben und Speziellen Features").create(), 5000);
+        DEFAULT(new ItemBuilder(Material.INK_SAC, 1, (short) 8).displayName("§7Standard-Nachricht").lore("", "§7§oMit diesem Kauf erhälst du folgendes", "§6§oFür 1.000 Coins", "", "§7- §cEine gefärbte fette Nachricht").create(), 1000),
+        EPIC(new ItemBuilder(Material.INK_SAC, 1, (short) 5).displayName("§5Epische-Nachricht").lore("", "§7§oMit diesem Kauf erhälst du folgendes", "§6§oFür 3.000 Coins", "", "§7- §cEine gefärbte fette Nachricht", "§7- §cEine klickbare teleportations Nachricht").create(), 3000),
+        EXCLUSIVE(new ItemBuilder(Material.INK_SAC, 1, (short) 14).displayName("§6Exklusive-Nachricht").lore("", "§7§oMit diesem Kauf erhälst du folgendes", "§6§oFür 5.000 Coins", "", "§7- §cEine gefärbte fette Nachricht", "§7- §cEine klickbare teleportations Nachricht", "§7- §cEine eigene Nachricht mit allen Farben und Speziellen Features").create(), 5000);
 
         ItemStack item;
         int coins;
@@ -111,7 +111,7 @@ public class AdverisingModeLevelInventory extends CoreInventory {
 
         setItem(InventorySlot.ROW_2_SLOT_7, Level.EXCLUSIVE.item, e -> {
             players.put(p.getUniqueId(), new ModeLevelMsg(mode, Level.EXCLUSIVE, null));
-            ANVIL_MSG_INVENTORY.open(p).setItem(AnvilSlot.INPUT_LEFT.getSlot(),  new ItemBuilder(Material.PAPER).displayName("Dein Werbungs Text").create());
+            ANVIL_MSG_INVENTORY.open(p).setItem(AnvilSlot.INPUT_LEFT.getSlot(), new ItemBuilder(Material.PAPER).displayName("Dein Werbungs Text").create());
         });
 
         openInventory();

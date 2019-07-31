@@ -5,6 +5,9 @@
 
 package eu.mcone.citybuild.listener;
 
+import eu.mcone.citybuild.Citybuild;
+import eu.mcone.citybuild.item.Perk;
+import eu.mcone.citybuild.player.CitybuildPlayer;
 import eu.mcone.coresystem.api.bukkit.event.MoneyChangeEvent;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -19,7 +22,9 @@ public class FoodChangeListener implements Listener {
         if (e.getEntity() instanceof Player) {
             Player p = (Player) e.getEntity();
 
-            if (p.hasPermission("citybuild.perks.food")) {
+            CitybuildPlayer cbp = Citybuild.getInstance().getCitybuildPlayer(p.getUniqueId());
+
+            if (cbp.hasPerk(Perk.FOOD_SAVE)) {
                 e.setCancelled(true);
             }
         }

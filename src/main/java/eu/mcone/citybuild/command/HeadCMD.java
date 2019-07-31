@@ -22,12 +22,13 @@ public class HeadCMD extends CorePlayerCommand {
     @Override
     public boolean onPlayerCommand(Player p, String[] args) {
         if (args.length == 0) {
+
             Citybuild.getInstance().getMessager().send(p, "§4Bitte benutze: §c/head <name>");
             return true;
         }
 
         CorePlayer cp = CoreSystem.getInstance().getCorePlayer(p);
-        if ((cp.getCoins() - 25000) >= 0) {
+        if ((cp.getCoins() - 35000) >= 0) {
             new HeadInventory(p, args[0]);
         } else {
             Citybuild.getInstance().getMessager().send(p, "§4Du hast nicht genügend Coins!");

@@ -27,7 +27,7 @@ public class TraderExclusiveInventory extends TraderInventory {
                         p.getInventory().addItem(item.getRawItem().create());
 
                         p.closeInventory();
-                        p.playSound(p.getLocation(), Sound.LEVEL_UP, 1, 1);
+                        p.playSound(p.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 1, 1);
                     } else {
                         Citybuild.getInstance().getMessager().send(p, "§4Du hast nicht genügend Coins!");
                     }

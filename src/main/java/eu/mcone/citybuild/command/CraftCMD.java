@@ -18,7 +18,7 @@ public class CraftCMD extends CorePlayerCommand {
     @Override
     public boolean onPlayerCommand(Player p, String[] args) {
         p.openWorkbench(null, true);
-        p.playSound(p.getLocation(), Sound.CHEST_OPEN, 1, 1);
+        p.playSound(p.getLocation(), Sound.BLOCK_CHEST_OPEN, 1, 1);
         return true;
     }
 }

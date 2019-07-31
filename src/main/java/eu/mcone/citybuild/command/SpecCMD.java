@@ -41,13 +41,13 @@ public class SpecCMD extends CorePlayerCommand {
                         if (cp.isVanished()) {
                         p.teleport(t);
                         p.sendMessage("§8[§7§l!§8] §fServer §8» §aDu beobachtest nun§f " + t.getDisplayName() + "§a um den Modus zu verlassen §f/spec§a!");
-                        p.playSound(p.getLocation(), Sound.CHICKEN_EGG_POP, 1, 1);
+                        p.playSound(p.getLocation(), Sound.ENTITY_CHICKEN_EGG, 1, 1);
 
                         } else {
                             cp.setVanished(true);
                             p.teleport(t);
                             p.sendMessage("§8[§7§l!§8] §fServer §8» §aDu beobachtest nun§f " + t.getDisplayName() + "§a um den Modus zu verlassen §f/spec§a!");
-                            p.playSound(p.getLocation(), Sound.CHICKEN_EGG_POP, 1, 1);
+                            p.playSound(p.getLocation(), Sound.ENTITY_CHICKEN_EGG, 1, 1);
                         }
                     } else {
                         p.sendMessage("§8[§7§l!§8] §fSystem §8» §4Du kannst dich nicht selbst beaobachten!");

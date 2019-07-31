@@ -5,6 +5,9 @@
 
 package eu.mcone.citybuild.listener;
 
+import eu.mcone.citybuild.Citybuild;
+import eu.mcone.citybuild.item.Perk;
+import eu.mcone.citybuild.player.CitybuildPlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -19,10 +22,14 @@ public class PlayerDamageListener implements Listener {
     @EventHandler
     public void on(EntityDamageEvent e) {
 
-        if(e.getCause().equals(EntityDamageEvent.DamageCause.FALL) && e.getEntity() instanceof Player) {
+        if (e.getEntity() instanceof Player) {
             Player p = (Player) e.getEntity();
-            if (p.hasPermission("citybuild.perks.falldamage")) {
-                e.setCancelled(true);
+            CitybuildPlayer cbp = Citybuild.getInstance().getCitybuildPlayer(p.getUniqueId());
+
+            if (cbp.hasPerk(Perk.NO_FALL_DAMAGE)) {
+                if (e.getCause().equals(EntityDamageEvent.DamageCause.FALL) && e.getEntity() instanceof Player) {
+                    e.setCancelled(true);
+                }
             }
         }
     }

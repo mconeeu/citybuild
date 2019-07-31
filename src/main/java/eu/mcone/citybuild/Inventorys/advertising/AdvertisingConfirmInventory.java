@@ -22,7 +22,7 @@ class AdvertisingConfirmInventory extends CoreInventory {
         super("§f§lKaufe nun deine Werbung", p, InventorySlot.ROW_3);
         CorePlayer cp = CoreSystem.getInstance().getCorePlayer(p);
 
-        setItem(InventorySlot.ROW_2_SLOT_2, new ItemBuilder(Material.STAINED_GLASS_PANE,1,5).displayName("§a§lKaufe die Werbung").create(), e -> {
+        setItem(InventorySlot.ROW_2_SLOT_2, new ItemBuilder(Material.LIME_STAINED_GLASS_PANE,1).displayName("§a§lKaufe die Werbung").create(), e -> {
             switch (modeLevelMsg.mode) {
                 case SHOP: {
                     switch (modeLevelMsg.level) {
@@ -135,7 +135,7 @@ class AdvertisingConfirmInventory extends CoreInventory {
         });
 
 
-        setItem(InventorySlot.ROW_2_SLOT_8, new ItemBuilder(Material.STAINED_GLASS_PANE,1,14).displayName("§c§lBreche den Vorgang ab!").create(), e -> {
+        setItem(InventorySlot.ROW_2_SLOT_8, new ItemBuilder(Material.RED_STAINED_GLASS_PANE,1).displayName("§c§lBreche den Vorgang ab!").create(), e -> {
             p.closeInventory();
         });
 

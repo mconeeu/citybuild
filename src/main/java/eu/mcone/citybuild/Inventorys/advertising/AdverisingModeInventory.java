@@ -20,7 +20,7 @@ public class AdverisingModeInventory extends CoreInventory {
     public AdverisingModeInventory(Player p) {
         super("§f§lWas möchtest du bewerben?", p, InventorySlot.ROW_3);
 
-        setItem(InventorySlot.ROW_2_SLOT_7, new ItemBuilder(Material.ENCHANTMENT_TABLE).displayName("§5§lEin Event").create(), e -> {
+        setItem(InventorySlot.ROW_2_SLOT_7, new ItemBuilder(Material.ENCHANTING_TABLE).displayName("§5§lEin Event").create(), e -> {
             new AdverisingModeLevelInventory(p, Mode.EVENT);
         });
 

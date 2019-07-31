@@ -3,7 +3,7 @@
  * You are not allowed to decompile the code
  */
 
-package eu.mcone.citybuild.Inventorys.border;
+package eu.mcone.citybuild.Inventorys.booster;
 
 import eu.mcone.coresystem.api.bukkit.inventory.CoreInventory;
 import eu.mcone.coresystem.api.bukkit.inventory.InventoryOption;

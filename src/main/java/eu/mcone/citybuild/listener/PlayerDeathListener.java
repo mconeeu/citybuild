@@ -5,6 +5,9 @@
 
 package eu.mcone.citybuild.listener;
 
+import eu.mcone.citybuild.Citybuild;
+import eu.mcone.citybuild.item.Perk;
+import eu.mcone.citybuild.player.CitybuildPlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -16,12 +19,13 @@ public class PlayerDeathListener implements Listener {
     public void on(PlayerDeathEvent e) {
         e.setDeathMessage(null);
         Player p = e.getEntity();
+        CitybuildPlayer cbp = Citybuild.getInstance().getCitybuildPlayer(p.getUniqueId());
 
-        if(p.hasPermission("citybuild.perks.keepinventory")) {
+        if (cbp.hasPerk(Perk.KEEP_INVENTORY_ON_DEATH)) {
             e.setKeepInventory(true);
         }
 
-        if(p.hasPermission("citybuild.perks.keepxp")) {
+        if (cbp.hasPerk(Perk.KEEP_XP_ON_DEATH)) {
             e.setKeepLevel(true);
 
 

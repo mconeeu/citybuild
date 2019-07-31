@@ -31,11 +31,11 @@ public class SignCMD extends CorePlayerCommand {
     public boolean onPlayerCommand(Player p, String[] args) {
         CorePlayer cp = CoreSystem.getInstance().getCorePlayer(p);
 
-        if (p.getItemInHand() != null && !p.getItemInHand().getType().equals(Material.AIR)) {
-            ItemStack i = p.getItemInHand();
+        if (!p.getInventory().getItemInMainHand().getType().equals(Material.AIR)) {
+            ItemStack i = p.getInventory().getItemInMainHand();
             ItemMeta meta = i.hasItemMeta() ? i.getItemMeta() : Bukkit.getItemFactory().getItemMeta(i.getType());
 
-            if (!meta.hasLore() || meta.getLore().size() == 0) {
+            if (meta != null && !meta.hasLore()) {
                 List<String> lore = new ArrayList<>();
                 lore.add("§fDas Item wurde Signiert von " + cp.getMainGroup().getPrefix() + p.getName() + " §fam §7" + new SimpleDateFormat("dd.MM.yyyy").format(new Date()));
                 meta.setLore(lore);

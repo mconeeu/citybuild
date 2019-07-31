@@ -6,11 +6,14 @@
 package eu.mcone.citybuild.listener;
 
 import eu.mcone.citybuild.Citybuild;
+import eu.mcone.citybuild.item.Perk;
 import eu.mcone.citybuild.player.CitybuildPlayer;
 import eu.mcone.citybuild.util.SidebarObjective;
 import eu.mcone.coresystem.api.bukkit.CoreSystem;
 import eu.mcone.coresystem.api.bukkit.player.CorePlayer;
 import eu.mcone.coresystem.api.bukkit.util.CoreActionBar;
+import net.md_5.bungee.api.chat.BaseComponent;
+import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.Bukkit;
 import org.bukkit.Effect;
 import org.bukkit.entity.Player;
@@ -23,33 +26,34 @@ import org.bukkit.scoreboard.DisplaySlot;
 
 public class PlayerJoinListener implements Listener {
 
-    private final static CoreActionBar LOADING_MSG = CoreSystem.getInstance().createActionBar().message("§7§oDeine Daten werden geladen...");
-    private final static CoreActionBar LOADING_SUCCESS_MSG = CoreSystem.getInstance().createActionBar().message("§2§oDeine Daten wurden geladen!");
+    private final static CoreActionBar LOADING_MSG = CoreSystem.getInstance().createActionBar().message(new BaseComponent[]{new TextComponent("§7§oDeine Daten werden geladen...").duplicate()});
+    private final static CoreActionBar LOADING_SUCCESS_MSG = CoreSystem.getInstance().createActionBar().message(new BaseComponent[]{new TextComponent("§2§oDeine Daten wurden geladen!").duplicate()});
 
     @EventHandler
     public void on(PlayerJoinEvent e) {
         Player p = e.getPlayer();
         CorePlayer cp = CoreSystem.getInstance().getCorePlayer(p);
+        CitybuildPlayer cbp = Citybuild.getInstance().getCitybuildPlayer(p.getUniqueId());
 
         p.setAllowFlight(true);
         if (p.hasPermission("citybuild.join.vanish")) {
             cp.setVanished(true);
         }
 
-        if (p.hasPermission("citybuild.perks.fireresistance")) {
-            p.addPotionEffect(new PotionEffect(PotionEffectType.FIRE_RESISTANCE, 999999, 1));
+        if (cbp.hasPerk(Perk.FIRE_RESISTANCE)) {
+            p.addPotionEffect(new PotionEffect(PotionEffectType.FIRE_RESISTANCE, Integer.MAX_VALUE, 1));
         }
 
-        if (p.hasPermission("citybuild.perks.nightvision")) {
-            p.addPotionEffect(new PotionEffect(PotionEffectType.NIGHT_VISION, 999999, 1));
+        if (cbp.hasPerk(Perk.NIGHT_VISION)) {
+            p.addPotionEffect(new PotionEffect(PotionEffectType.NIGHT_VISION, Integer.MAX_VALUE, 1));
         }
 
-        if (p.hasPermission("citybuild.perks.speed")) {
-            p.setWalkSpeed(0.3F);
+        if (cbp.hasPerk(Perk.SPEED)) {
+            p.setWalkSpeed(0.22F);
         }
 
-        if (p.hasPermission("citybuild.perks.aqua")) {
-            p.addPotionEffect(new PotionEffect(PotionEffectType.WATER_BREATHING,999999 , 0));
+        if (cbp.hasPerk(Perk.WATER_BREATHING)) {
+            p.addPotionEffect(new PotionEffect(PotionEffectType.WATER_BREATHING, Integer.MAX_VALUE, 0));
         }
 
 
@@ -58,7 +62,6 @@ public class PlayerJoinListener implements Listener {
                 t.getScoreboard().getObjective(DisplaySlot.SIDEBAR).reload();
             }
         }
-
 
 
         LOADING_MSG.send(p);
