@@ -21,6 +21,8 @@ public class GlowCMD extends CorePlayerCommand {
                 p.setGlowing(true);
                 p.sendMessage("§8[§7§l!§8] §fServer §8» §aDu leuchtest nun!");
             }
+        } else {
+            p.sendMessage("§8[§7§l!§8] §fServer §8» §4Du hast keine Rechte für diesen Befehl!");
         }
 
 

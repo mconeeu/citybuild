@@ -6,6 +6,7 @@
 package eu.mcone.citybuild.player;
 
 import eu.mcone.citybuild.item.Perk;
+import eu.mcone.citybuild.util.CitybuildChatColor;
 import eu.mcone.coresystem.api.bukkit.player.profile.PlayerInventoryProfile;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -23,6 +24,7 @@ public class CitybuildPlayerProfile extends PlayerInventoryProfile {
 
     private ChatColor defaultChatColor = ChatColor.GRAY;
     private List<Integer> perks = new ArrayList<>();
+    private List<CitybuildChatColor> ownChatColors = new ArrayList<>();
 
     private transient Set<Perk> perkSet = new HashSet<>();
 

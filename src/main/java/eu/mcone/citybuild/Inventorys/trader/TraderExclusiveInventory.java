@@ -26,6 +26,7 @@ public class TraderExclusiveInventory extends TraderInventory {
                         cp.removeCoins(item.getPrice());
                         p.getInventory().addItem(item.getRawItem().create());
 
+
                         p.closeInventory();
                         p.playSound(p.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 1, 1);
                     } else {

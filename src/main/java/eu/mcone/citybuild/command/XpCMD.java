@@ -21,13 +21,13 @@ public class XpCMD extends CorePlayerCommand {
             if (args.length == 1) {
                 Player t = Bukkit.getPlayer(args[0]);
                 if (t != null) {
-                    p.sendMessage("§8[§7§l!§8] §fServer §8» §aDer Spieler §c" + args[0] + "§7hat momentan §5" + t.getLevel() + "§5Level!");
+                    p.sendMessage("§8[§7§l!§8] §fServer §8» §aDer Spieler §c" + args[0] + "§ahat momentan §c" + t.getLevel() + "§aLevel!");
                 } else {
                     p.sendMessage("§8[§7§l!§8] §fServer §8» §cDieser Spieler ist nicht Online!");
 
                 }
             } else {
-                p.sendMessage("§8[§7§l!§8] §fServer §8» §aBitte benutze /xp <Spieler>");
+                p.sendMessage("§8[§7§l!§8] §fServer §8» §cBitte benutze /xp <Spieler>");
             }
         } else {
             p.sendMessage("§8[§7§l!§8] §fServer §8» §4Du hast keine Rechte für diesen Befehl!");
