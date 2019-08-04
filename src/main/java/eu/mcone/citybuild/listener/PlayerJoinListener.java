@@ -35,7 +35,6 @@ public class PlayerJoinListener implements Listener {
         CorePlayer cp = CoreSystem.getInstance().getCorePlayer(p);
         CitybuildPlayer cbp = Citybuild.getInstance().getCitybuildPlayer(p.getUniqueId());
 
-        p.setAllowFlight(true);
         if (p.hasPermission("citybuild.join.vanish")) {
             cp.setVanished(true);
         }

@@ -37,7 +37,13 @@ public class ChatInventory extends CoreInventory {
             }
 
             Map.Entry<CitybuildChatColor, ItemBuilder> entry = it.next();
-            setItem(x, entry.getValue().lore(cbp.hasChatColor(entry.getKey()) ? "§2§oDu besitz diese Farbe!" : "§4$oDu besitzt diese Farbe nicht!").create(), cbp.hasChatColor(entry.getKey()) ? e -> {
+            setItem(
+                    x,
+                    entry.getValue().lore(
+                            cbp.hasChatColor(
+                                    entry.getKey()) ? "§2§oDu besitz diese Farbe!" : "§4$oDu besitzt diese Farbe nicht!").create(),
+                    cbp.hasChatColor(entry.getKey()) ?
+                            e -> {
                 cbp.setDefaultChatColor(entry.getKey().getColor());
                 Citybuild.getInstance().getMessager().send(p, "§2Du hast die Farbe "+entry.getKey().getDisplayName()+" erfolgreich als Standartfarbe ausgewählt!");
             } : null);

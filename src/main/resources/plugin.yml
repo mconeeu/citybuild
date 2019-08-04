@@ -1,6 +1,7 @@
 name: MCONE-CitybuildSystem
 authors: [Marvin Hülsmann]
 version: ${project.version}
+api-version: '1.13'
 main: eu.mcone.citybuild.Citybuild
 description: Ein CityBuild Plugin von MCONE
 

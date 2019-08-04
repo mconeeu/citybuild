@@ -1,40 +1,82 @@
 package eu.mcone.citybuild.command;
 
+import eu.mcone.coresystem.api.bukkit.CoreSystem;
 import eu.mcone.coresystem.api.bukkit.command.CoreCommand;
 import eu.mcone.coresystem.api.bukkit.command.CorePlayerCommand;
 import eu.mcone.coresystem.api.bukkit.player.CorePlayer;
 import org.bukkit.Bukkit;
+import org.bukkit.Sound;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-public class XpCMD extends CorePlayerCommand {
+public class XpCMD extends CoreCommand {
 
 
     public XpCMD() {
-        super("xp");
+        super("level", null, "xp");
     }
 
     @Override
-    public boolean onPlayerCommand(Player p, String[] args) {
+    public boolean onCommand(CommandSender sender, String[] args) {
+        if (args.length == 0 && sender instanceof Player) {
+            Player p = (Player) sender;
 
-        if (p.hasPermission("citybuild.see.xp")) {
+            p.sendMessage("§7Du hast momentan §d" + p.getLevel() + " Level§7!");
+
+            p.playSound(p.getLocation(), Sound.ENTITY_CHICKEN_EGG, 1, 1);
+        } else if (sender.hasPermission("citybuild.xp")) {
             if (args.length == 1) {
-                Player t = Bukkit.getPlayer(args[0]);
-                if (t != null) {
-                    p.sendMessage("§8[§7§l!§8] §fServer §8» §aDer Spieler §c" + args[0] + "§ahat momentan §c" + t.getLevel() + "§aLevel!");
+                if (args[0].equalsIgnoreCase("add") || args[0].equalsIgnoreCase("remove")) {
+                    CoreSystem.getInstance().getMessager().send(sender, "§4Bitte benutze: §c/xp <add | remove> <name> <amount> §4oder §c/xp <name>");
+                    return true;
                 } else {
-                    p.sendMessage("§8[§7§l!§8] §fServer §8» §cDieser Spieler ist nicht Online!");
+                    Player t = Bukkit.getPlayer(args[0]);
 
+                    if (t != null) {
+                        sender.sendMessage("§8[§7§l!§8] §dLevel §8» §7Der Spieler §f" + t.getName() + " §7hat §d" + t.getLevel() + " Level§7!");
+                    } else {
+                        sender.sendMessage("§8[§7§l!§8] §dLevel §8» §cDer Spieler ist nicht online!");
+                    }
+                    return true;
                 }
-            } else {
-                p.sendMessage("§8[§7§l!§8] §fServer §8» §cBitte benutze /xp <Spieler>");
+            } else if (args.length == 3) {
+                if (args[0].equalsIgnoreCase("add")) {
+                    Player t = Bukkit.getPlayer(args[1]);
+
+                    if (t != null) {
+                        t.setLevel(Integer.valueOf(args[2]));
+                        sender.sendMessage("§8[§7§l!§8] §dLevel §8» §7Du hast §f" + t.getName() + " §7erfolgreich §f" + args[2] + " §7Kisten hinzugefügt");
+                    } else {
+                        sender.sendMessage("§8[§7§l!§8] §dLevel §8» §cDer Spieler ist nicht online!");
+                    }
+                    return true;
+                } else if (args[0].equalsIgnoreCase("remove")) {
+                    Player t = Bukkit.getPlayer(args[1]);
+
+                    if (t != null) {
+                        int current = t.getLevel();
+                        int amount = Integer.valueOf(args[2]);
+
+                        if ((current - amount) >= 0) {
+                            t.setLevel(current - amount);
+                            sender.sendMessage("§8[§7§l!§8] §dLevel §8» §7Du hast §f" + t.getName() + " §7erfolgreich §f" + args[2] + " §7Level entfernt");
+                        } else {
+                            sender.sendMessage("§8[§7§l!§8] §dLevel §8» §7Du kannst §f" + t.getName() + " §7nicht so viele Level entfernen! Er hat nur §d" + current + " §dLevel§7!");
+                        }
+                    } else {
+                        sender.sendMessage("§8[§7§l!§8] §dLevel §8»§c Der Spieler ist nicht online!");
+                    }
+                    return true;
+                }
             }
-        } else {
-            p.sendMessage("§8[§7§l!§8] §fServer §8» §4Du hast keine Rechte für diesen Befehl!");
+
+            CoreSystem.getInstance().getMessager().send(sender, "§4Bitte benutze: §c/Level <add | remove> <name> <amount> §4oder §c/Level <name>");
+        } else if (sender instanceof Player) {
+            CoreSystem.getInstance().getMessager().sendTransl((Player) sender, "system.command.noperm");
         }
 
-
-        return false;
+        return true;
     }
+
 }
 

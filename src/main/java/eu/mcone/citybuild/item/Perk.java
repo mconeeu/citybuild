@@ -19,7 +19,8 @@ public enum Perk {
     FIRE_RESISTANCE(7, "§dKein Feuerschaden", Material.FIRE_CHARGE, new String[]{""}, 100),
     NIGHT_VISION(8, "§dNachtsicht", Material.GLASS_BOTTLE, new String[]{""}, 100),
     SPEED(9, "§dSchneller Laufen", Material.DIAMOND_BOOTS, new String[]{""}, 100),
-    FOOD_SAVE(10, "§dKein Hunger", Material.COOKED_BEEF, new String[]{""}, 100);
+    FOOD_SAVE(10, "§dKein Hunger", Material.COOKED_BEEF, new String[]{""}, 100),
+    PLOT_FLY_PERK(11, "§fPlot fliegen", Material.FEATHER, new String[]{""}, 100);
 
     private int id, price;
     private String displayname;
