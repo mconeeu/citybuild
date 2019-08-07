@@ -84,7 +84,8 @@ public class Citybuild extends CitybuildPlugin {
                 new XpCMD(),
                 new GlowCMD(),
                 new BroadcastCMD(),
-                new TraderCMD()
+                new TraderCMD(),
+                new WallCMD()
         );
 
         registerEvents(

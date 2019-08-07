@@ -24,8 +24,8 @@ public class XpCMD extends CoreCommand {
             p.playSound(p.getLocation(), Sound.ENTITY_CHICKEN_EGG, 1, 1);
         } else if (sender.hasPermission("citybuild.xp")) {
             if (args.length == 1) {
-                if (args[0].equalsIgnoreCase("add") || args[0].equalsIgnoreCase("remove")) {
-                    CoreSystem.getInstance().getMessager().send(sender, "§4Bitte benutze: §c/xp oder /level <add | remove> <name> <amount> §4oder §c/xp oder /level <name>");
+                if (args[0].equalsIgnoreCase("add") || args[0].equalsIgnoreCase("remove") || args[0].equalsIgnoreCase("set")) {
+                    CoreSystem.getInstance().getMessager().send(sender, "§4Bitte benutze: §c/xp oder /level <add | remove> | <set> <name> <amount> §4oder §c/xp oder /level <name>");
                     return true;
                 } else {
                     Player t = Bukkit.getPlayer(args[0]);
@@ -42,7 +42,9 @@ public class XpCMD extends CoreCommand {
                     Player t = Bukkit.getPlayer(args[1]);
 
                     if (t != null) {
-                        t.setLevel(Integer.valueOf(args[2]));
+                        int current = t.getLevel();
+                        int amount = Integer.valueOf(args[2]);
+                        t.setLevel(current + amount);
                         sender.sendMessage("§8[§7§l!§8] §dLevel §8» §7Du hast §f" + t.getName() + " §7erfolgreich §d" + args[2] + " Level§7 hinzugefügt");
                     } else {
                         sender.sendMessage("§8[§7§l!§8] §dLevel §8» §cDer Spieler ist nicht online!");
@@ -65,6 +67,16 @@ public class XpCMD extends CoreCommand {
                         sender.sendMessage("§8[§7§l!§8] §dLevel §8»§c Der Spieler ist nicht online!");
                     }
                     return true;
+                } else if (args[0].equalsIgnoreCase("set")) {
+                    Player t = Bukkit.getPlayer(args[1]);
+
+                    if (t != null) {
+                        t.setLevel(Integer.valueOf(args[2]));
+                        sender.sendMessage("§8[§7§l!§8] §dLevel §8» §7Du hast §f" + t.getName() + " §7erfolgreich die Level auf§d" + args[2] + " §7gesetzt!");
+
+                    } else {
+                        sender.sendMessage("§8[§7§l!§8] §dLevel §8»§c Der Spieler ist nicht online!");
+                    }
                 }
             }
 

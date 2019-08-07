@@ -19,7 +19,7 @@ import org.bukkit.entity.Player;
 public class BorderInventory extends CoreInventory {
 
     public BorderInventory(Player p, Plot plot) {
-        super("Bearbeite dein Rand", p, InventorySlot.ROW_3);
+        super("Bearbeite dein Plot Rand", p, InventorySlot.ROW_3);
 
         setItem(InventorySlot.ROW_1_SLOT_1, new ItemBuilder(Material.DIAMOND_BLOCK, 1).displayName("§eDiamanten Rand").lore("§7Für §31000 Coins §7verfügbar!").create(), e -> setRand(plot, p, 1000, "57"));
         setItem(InventorySlot.ROW_1_SLOT_2, new ItemBuilder(Material.IRON_BARS, 1).displayName("§eEisen-Gitter Rand").lore("§7Für §31000 Coins §7verfügbar!").create(), e -> setRand(plot, p, 1000, "101"));
@@ -52,7 +52,7 @@ public class BorderInventory extends CoreInventory {
 
             Citybuild.getInstance().getMessager().send(p, "§8[§7§l!§8] §fSystem §8» §aDer Rand wurde erfolgreich gesetzt!");
         } else {
-            Citybuild.getInstance().getMessager().send(p, "§8[§7§l!§8] §fSystem §8» §7Du hast nicht genügend Coins!");
+            Citybuild.getInstance().getMessager().send(p, "§8[§7§l!§8] §fSystem §8» §cDu hast nicht genügend Coins!");
         }
     }
 
