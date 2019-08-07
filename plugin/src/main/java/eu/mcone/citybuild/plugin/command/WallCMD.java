@@ -4,6 +4,7 @@ import com.intellectualcrafters.plot.object.Plot;
 import com.intellectualcrafters.plot.object.PlotPlayer;
 import eu.mcone.citybuild.plugin.Citybuild;
 import eu.mcone.citybuild.plugin.Inventorys.border.BorderInventory;
+import eu.mcone.citybuild.plugin.Inventorys.wall.WallInventory;
 import eu.mcone.coresystem.api.bukkit.command.CorePlayerCommand;
 import org.bukkit.entity.Player;
 
@@ -19,7 +20,7 @@ public class WallCMD extends CorePlayerCommand {
 
             if (plot != null) {
                 if (plot.getOwners().contains(p.getUniqueId()) || p.hasPermission("citybuild.wall")) {
-                    new BorderInventory(p, plot);
+                    new WallInventory(p, plot);
                 } else {
                     Citybuild.getInstance().getMessager().send(p, "§4Du bist kein Owner dieses Plots!");
                 }
